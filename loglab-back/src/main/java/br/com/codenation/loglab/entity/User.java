@@ -14,7 +14,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany
     private Integer id;
 
     @Email(message = "E-mail inválido!")
@@ -28,7 +27,6 @@ public class User {
     private String password;
 
     @Column(name = "origin")
-    @OneToMany
     @NotBlank
     @NotNull
     private Double sourceIp;
