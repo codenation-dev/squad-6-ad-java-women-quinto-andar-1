@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41f46c45-ea5f-4e33-aa3a-d22f5701c33e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/service/LogService.java" afterDir="false" />
+    <list default="true" id="4b4aa399-7f93-4d49-b638-decd08085bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/repository/LogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/repository/LogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/service/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/src/main/java/br/com/codenation/loglab/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loglab-back/target/classes/br/com/codenation/loglab/repository/LogRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/loglab-back/target/classes/br/com/codenation/loglab/repository/LogRepository.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +22,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SdEnwlXebQGaE4AdL52VeT28w3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -47,7 +58,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

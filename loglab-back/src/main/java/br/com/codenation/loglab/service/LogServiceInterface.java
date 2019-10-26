@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface LogServiceInterface  {
 
    public Optional<Log> findById(Integer id);
-   public Optional<Log> findByLevelType(String level);
-   public Optional<Log> findByQuantity(Long quantity);
+   public Log findByLevelType(String level);
+   public Log findByQuantity(Long quantity);
    public List<Log> orderByLevel(String level);
-   public List<Log> orderByQuantity(Long quanntity);
+   public List<Log> orderByQuantity();
 }
