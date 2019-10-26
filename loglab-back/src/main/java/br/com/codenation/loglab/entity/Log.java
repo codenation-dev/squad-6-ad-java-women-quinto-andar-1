@@ -25,7 +25,8 @@ public class Log {
     private String titleError;
 
     @ManyToOne
-    private User userId;
+    private User user;
+
     private String details;
 
     @CreatedDate
@@ -36,8 +37,6 @@ public class Log {
     private Long quantity;
 
     private Boolean filed;
-    private String environment;
 
-    @ManyToOne
-    private User userSourceIp;
+    private String environment;
 }
