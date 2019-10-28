@@ -5,5 +5,7 @@ import br.com.codenation.loglab.entity.User;
 import java.util.Optional;
 
 public interface UserServiceInterface {
-    public Optional<User> findById(Integer id);
+	public Optional<User> findById(Integer id);
+
+	public User save(User user);
 }
