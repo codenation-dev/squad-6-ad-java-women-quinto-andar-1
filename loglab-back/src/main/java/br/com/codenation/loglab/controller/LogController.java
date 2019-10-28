@@ -1,5 +1,6 @@
 package br.com.codenation.loglab.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,27 @@ public class LogController {
 		Optional<Log> log = logService.findById(id);
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
+	
+	@GetMapping("/level/{level}")
+	public ResponseEntity<LogDTO> findByLevelType(@PathVariable String level){
+		Log log = logService.findByLevelType(level);
+		return ResponseEntity.ok(logMapper.toLogDTO(log));
+	}
+	
+	public ResponseEntity<LogDTO> findByQuantity(@PathVariable Long quantity){
+		Log log = logService.findByQuantity(quantity);
+		return ResponseEntity.ok(logMapper.toLogDTO(log));
+	}
+	
+	public ResponseEntity<List<LogDTO>> orderByLevelType(String level){
+		List<Log> log = logService.orderByLevelType(level);
+		return ResponseEntity.ok(logMapper.toLogDTOs(log));
+	}
+	
+	public ResponseEntity<List<LogDTO>> orderByQuantity(){
+		List<Log> log = logService.orderByQuantity();
+		return ResponseEntity.ok(logMapper.toLogDTOs(log));
+	}
+	
+	
 }
