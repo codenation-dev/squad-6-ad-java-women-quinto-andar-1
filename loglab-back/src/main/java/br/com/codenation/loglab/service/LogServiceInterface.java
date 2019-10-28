@@ -10,6 +10,6 @@ public interface LogServiceInterface  {
    public Optional<Log> findById(Integer id);
    public Log findByLevelType(String level);
    public Log findByQuantity(Long quantity);
-   public List<Log> orderByLevel(String level);
+   public List<Log> orderByLevelType(String level);
    public List<Log> orderByQuantity();
 }

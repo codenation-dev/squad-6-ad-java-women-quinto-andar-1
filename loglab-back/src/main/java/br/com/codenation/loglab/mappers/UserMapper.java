@@ -12,7 +12,7 @@ public interface UserMapper {
 
 	public UserDTO toUserDTO(User user);
 	
-	List<UserDTO> toUserDTOs(List<User> users);
+	public List<UserDTO> toUserDTOs(List<User> users);
 	
-	User toUser (UserDTO userDTO);
+	public User toUser (UserDTO userDTO);
 }

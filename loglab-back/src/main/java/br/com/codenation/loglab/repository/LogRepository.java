@@ -11,7 +11,7 @@ public interface LogRepository extends JpaRepository<Log, Integer> {
 
     public Log findByLevelType(String levelType);
     public Log findByQuantity(Long quantity);
-    public List<Log> orderByLevel(String level);
+    public List<Log> OrderByLevelType(String level);
     public List<Log> orderByQuantity();
 
 

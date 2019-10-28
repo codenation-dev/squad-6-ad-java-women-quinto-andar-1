@@ -35,8 +35,8 @@ public class LogService implements  LogServiceInterface{
     }
 
     @Override
-    public List<Log> orderByLevel(String level) {
-        return logRepository.orderByLevel(level);
+    public List<Log> orderByLevelType(String level) {
+        return logRepository.OrderByLevelType(level);
     }
 
     @Override
