@@ -1,43 +1,153 @@
 package br.com.codenation.loglab.entity;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Log {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(name = "level")
-    @NotNull
-    private String levelType;
+	@Column(name = "level")
+	@NotNull
+	private String levelType;
 
-    @Column(name = "title")
-    @NotNull
-    private String titleError;
+	@Column(name = "title")
+	@NotNull
+	private String titleError;
 
-    @ManyToOne
-    private User userId;
-    private String details;
+	@ManyToOne
+	private User userId;
 
-    @CreatedDate
-    @NotNull
-    private LocalDateTime createdAt;
+	private String details;
 
-    @Column(name = "frequency")
-    private Long quantity;
+	@CreatedDate
+	@NotNull
+	private LocalDateTime createdAt;
 
-    private Boolean filed;
-    private String environment;
+	@Column(name = "frequency")
+	private Long quantity;
 
-    @ManyToOne
-    private User userSourceIp;
+	private Boolean filed;
+
+	private String environment;
+
+	@ManyToOne
+	private User userSourceIp;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public Log() {
+	}
+
+	public Log(Integer id, @NotNull String levelType, @NotNull String titleError, User userId, String details,
+			@NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment, User userSourceIp) {
+		this.id = id;
+		this.levelType = levelType;
+		this.titleError = titleError;
+		this.userId = userId;
+		this.details = details;
+		this.createdAt = createdAt;
+		this.quantity = quantity;
+		this.filed = filed;
+		this.environment = environment;
+		this.userSourceIp = userSourceIp;
+	}
+
+	public String getLevelType() {
+		return levelType;
+	}
+
+	public void setLevelType(String levelType) {
+		this.levelType = levelType;
+	}
+
+	public String getTitleError() {
+		return titleError;
+	}
+
+	public void setTitleError(String titleError) {
+		this.titleError = titleError;
+	}
+
+	public User getUserId() {
+		return userId;
+	}
+
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
+	public Boolean getFiled() {
+		return filed;
+	}
+
+	public void setFiled(Boolean filed) {
+		this.filed = filed;
+	}
+
+	public String getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(String environment) {
+		this.environment = environment;
+	}
+
+	public User getUserSourceIp() {
+		return userSourceIp;
+	}
+
+	public void setUserSourceIp(User userSourceIp) {
+		this.userSourceIp = userSourceIp;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 }

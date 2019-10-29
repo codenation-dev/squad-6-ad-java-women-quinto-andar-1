@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +24,14 @@ public class LogController {
 
 	@Autowired
 	private LogServiceInterface logService;
+	private LogMapper logMapper = new LogMapper();
 	
-	@Autowired
-	private LogMapper logMapper;
+	@PostMapping
+	public ResponseEntity<LogDTO> createUser(@RequestBody LogDTO logDTO) {
+		Log log= logService.save(logMapper.toLog(logDTO));
+		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
+
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id){
@@ -33,20 +41,17 @@ public class LogController {
 	
 	@GetMapping("/level/{level}")
 	public ResponseEntity<LogDTO> findByLevelType(@PathVariable String level){
-		Log log = logService.findByLevelType(level);
+		Log log = logService.findByLevel(level);
 		return ResponseEntity.ok(logMapper.toLogDTO(log));
 	}
 	
-	public ResponseEntity<LogDTO> findByQuantity(@PathVariable Long quantity){
-		Log log = logService.findByQuantity(quantity);
-		return ResponseEntity.ok(logMapper.toLogDTO(log));
-	}
-	
-	public ResponseEntity<List<LogDTO>> orderByLevelType(String level){
-		List<Log> log = logService.orderByLevelType(level);
+	@GetMapping("/orderLevel")
+	public ResponseEntity<List<LogDTO>> orderByLevelType(){
+		List<Log> log = logService.findAllOrderByLevelType();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 	
+	@GetMapping("/orderQuantity")
 	public ResponseEntity<List<LogDTO>> orderByQuantity(){
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));

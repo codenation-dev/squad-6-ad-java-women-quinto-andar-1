@@ -1,12 +1,14 @@
 package br.com.codenation.loglab.service;
 
-import br.com.codenation.loglab.entity.Log;
-import br.com.codenation.loglab.repository.LogRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import br.com.codenation.loglab.entity.Log;
+import br.com.codenation.loglab.entity.User;
+import br.com.codenation.loglab.repository.LogRepository;
 
 @Service
 public class LogService implements  LogServiceInterface{
@@ -25,7 +27,7 @@ public class LogService implements  LogServiceInterface{
     }
 
     @Override
-    public Log findByLevelType(String level) {
+    public Log findByLevel(String level) {
         return logRepository.findByLevelType(level) ;
     }
 
@@ -35,12 +37,17 @@ public class LogService implements  LogServiceInterface{
     }
 
     @Override
-    public List<Log> orderByLevelType(String level) {
-        return logRepository.OrderByLevelType(level);
+    public List<Log> findAllOrderByLevelType() {
+        return logRepository.findAllOrderByLevelType();
     }
 
     @Override
     public List<Log> orderByQuantity() {
-        return logRepository.orderByQuantity();
+        return logRepository.OrderByQuantity();
     }
+
+	@Override
+	public Log save(Log log) {
+		return logRepository.save(log);
+	}
 }

@@ -23,9 +23,7 @@ public class UserController {
 
 	@Autowired
 	private UserServiceInterface userService;
-
-	@Autowired
-	private UserMapper userMapper;
+	private UserMapper userMapper = new UserMapper();
 	
 	@PostMapping
 	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
