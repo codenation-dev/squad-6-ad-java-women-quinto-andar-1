@@ -15,10 +15,9 @@ public class LogDTO {
 	private Long quantity;
 	boolean filed;
 	private String environment;
-	private User userSourceIp;
 
 	public LogDTO(Integer id, String level, String titleError, User userId, String details, LocalDateTime createdAt,
-			Long quantity, boolean filed, String environment, User userSourceIp) {
+			Long quantity, boolean filed, String environment) {
 		this.id = id;
 		this.level = level;
 		this.titleError = titleError;
@@ -28,7 +27,6 @@ public class LogDTO {
 		this.quantity = quantity;
 		this.filed = filed;
 		this.environment = environment;
-		this.userSourceIp = userSourceIp;
 	}
 
 	public Integer getId() {
@@ -101,14 +99,6 @@ public class LogDTO {
 
 	public void setEnvironment(String environment) {
 		this.environment = environment;
-	}
-
-	public User getUserSourceIp() {
-		return userSourceIp;
-	}
-
-	public void setUserSourceIp(User userSourceIp) {
-		this.userSourceIp = userSourceIp;
 	}
 
 }

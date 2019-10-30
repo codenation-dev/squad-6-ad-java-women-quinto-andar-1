@@ -11,14 +11,13 @@ public class LogMapper {
 	public LogDTO toLogDTO(Log log) {
 		return new LogDTO(log.getId(),
 				log.getLevelType(), log.getTitleError(),
-				log.getUserId(),
+				log.getUser(),
 				log.getDetails(),
 				log.getCreatedAt(),
 				log.getQuantity(),
 				log.getFiled(),
-				log.getEnvironment(),
-				log.getUserSourceIp());
-	}
+				log.getEnvironment());
+		}
 		
 	public List<LogDTO> toLogDTOs(List<Log> logs){
 		List<LogDTO> lista = new ArrayList<>();
@@ -26,13 +25,12 @@ public class LogMapper {
 			lista.add(new LogDTO(l.getId(),
 					l.getLevelType(),
 					l.getTitleError(),
-					l.getUserId(),
+					l.getUser(),
 					l.getDetails(),
 					l.getCreatedAt(),
 					l.getQuantity(),
 					l.getFiled(),
-					l.getEnvironment(),
-					l.getUserSourceIp()));
+					l.getEnvironment()));
 		}
 		return lista;
 	}
@@ -46,7 +44,6 @@ public class LogMapper {
 				logDTO.getCreatedAt(),
 				logDTO.getQuantity(),
 				logDTO.getFiled(),
-				logDTO.getEnvironment(),
-				logDTO.getUserSourceIp());
+				logDTO.getEnvironment());
 	}
 }
