@@ -1,18 +1,11 @@
 package br.com.codenation.loglab.entity;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -53,18 +46,17 @@ public class Log {
     public Log() {
     }
 
-    public Log(Integer id, @NotNull String levelType, @NotNull String titleError, User userId, String details,
-               @NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment, User userSourceIp) {
+    public Log(Integer id, @NotNull String levelType, @NotNull String titleError, User user, String details,
+               @NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment) {
         this.id = id;
         this.levelType = levelType;
         this.titleError = titleError;
-        this.userId = userId;
+        this.user = user;
         this.details = details;
         this.createdAt = createdAt;
         this.quantity = quantity;
         this.filed = filed;
         this.environment = environment;
-        this.userSourceIp = userSourceIp;
     }
 
     public String getLevelType() {
@@ -83,12 +75,12 @@ public class Log {
         this.titleError = titleError;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDetails() {
@@ -125,9 +117,5 @@ public class Log {
 
     public String getEnvironment() {
         return environment;
-    }
-
-    public User getUserSourceIp() {
-        return userSourceIp;
     }
 }
