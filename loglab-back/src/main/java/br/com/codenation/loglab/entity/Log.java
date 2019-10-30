@@ -14,10 +14,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Log {
@@ -134,33 +130,7 @@ public class Log {
 		return environment;
 	}
 
-<<<<<<< HEAD
-	public void setEnvironment(String environment) {
-		this.environment = environment;
-	}
-=======
-    @ManyToOne
-    private User user;
-
-    private String details;
->>>>>>> 91ebe4043fbe3e82a3e5d1fa08f6b0cb4733236f
-
 	public User getUserSourceIp() {
 		return userSourceIp;
 	}
-
-	public void setUserSourceIp(User userSourceIp) {
-		this.userSourceIp = userSourceIp;
-	}
-
-<<<<<<< HEAD
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-=======
-    private Boolean filed;
-
-    private String environment;
->>>>>>> 91ebe4043fbe3e82a3e5d1fa08f6b0cb4733236f
 }

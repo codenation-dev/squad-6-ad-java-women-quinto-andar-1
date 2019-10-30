@@ -2,9 +2,6 @@ package br.com.codenation.loglab.dto;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import br.com.codenation.loglab.entity.User;
 
 public class LogDTO {

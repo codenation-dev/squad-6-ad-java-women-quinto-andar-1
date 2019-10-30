@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.codenation.loglab.entity.Log;
-import br.com.codenation.loglab.entity.User;
 import br.com.codenation.loglab.repository.LogRepository;
 
 @Service

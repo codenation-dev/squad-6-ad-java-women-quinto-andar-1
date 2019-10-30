@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.codenation.loglab.entity.Log;
-import br.com.codenation.loglab.entity.User;
 //order by level, events. find by level,descrição,origem
 public interface LogServiceInterface  {
 
