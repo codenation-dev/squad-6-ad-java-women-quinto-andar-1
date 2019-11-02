@@ -1,5 +1,6 @@
 <template>
   <div id="dashboard">
+    <navbar />
     <SearchFilter></SearchFilter>
     <div id="options" class="d-flex align-items-center justify-content-left">
       <button>Arquivar</button>

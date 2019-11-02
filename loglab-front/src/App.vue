@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <navbar v-if="renderNavbar" />
     <router-view/>
     <myFooter />
   </div>
@@ -11,21 +10,12 @@ import myFooter from './components/Footer'
 import Navbar from './components/Navbar'
 
 export default {
-    data() {
-        return {
-            currentPath: this.$router.currentRoute.path,
-            renderNavbar: false,
-        }
-    },
+   
     components: {
     myFooter,
     Navbar
   },
-    mounted(){
-        this.currentPath != '/' && this.currentPath != '/register' ? this.renderNavbar = true : this.renderNavbar = false;
-        console.log("rota:", this.$router.currentRoute);
-        console.log("navbar:", this.renderNavbar);
-    }
+    
 }
 </script>
 
