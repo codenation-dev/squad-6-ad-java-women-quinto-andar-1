@@ -1,6 +1,7 @@
 <template>
   <div class="home fullscreen">
     <img src="../assets/logo.png" />
+    <h2>Para começar, faça o login :)</h2>
     <form id="loginForm" @submit="login()">
       <input type="text" name="email" placeholder="youremail@yoursite.com" />
       <input type="password" name="passwors" placeholder="senha" />
@@ -11,13 +12,9 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "home",
-  components: {
-    HelloWorld
-  },
   methods: {
     login(){
       console.log("login");
@@ -29,11 +26,19 @@ export default {
 
 <style lang="scss">
 @import "../assets/css/components";
-
+@import "../assets/css/variables";
+h2{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
 input {
   margin-bottom: 5px;
+  width: 300px;
 }
-
+button{
+  margin-top: 20px;
+}
 #loginForm {
   display: flex;
   align-items: center;

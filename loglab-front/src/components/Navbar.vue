@@ -6,6 +6,7 @@
 </template>
 
 <style lang="scss">
+@import "../assets/css/variables";
 #nav {
   display: flex;
   flex-direction: row;
@@ -25,7 +26,8 @@
     height: 60px;
     &.profile {
       border-radius: 50%;
-      border: 3px solid #ccc;
+      border: 3px solid $secondaryGray;
+      cursor: pointer;
     }
   }
 }
