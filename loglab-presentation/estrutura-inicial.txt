@@ -1,0 +1,35 @@
+Organização dos Slides
+
+1 - (logo) LogLab - Sistema de monitoramento de sistemas
+
+2 - (O que é) Fluxo de funcionamento do sistema (ilustração mostrando o ciclo de funcionamento) (o que acham?)
+
+3 - O Processo de desenvolvimento:
+  a - Definição do escopo
+  b - Mapeamento das entidades
+  c - Reunião de design
+  d - Início do back: Criação da Service, DTO, Controller, Repository, Model, Mapper
+  e - Configuração do banco de dados, deploy, segurança
+  f - Integração da API no front
+  g - Autenticação
+  h - Testes, exceptions
+  i - Documentação Swagger
+  j - Finalização e Entrega (faltou algo?)
+
+4 - Tecnologias utilizadas:
+ (logos..) GitHub, Maven, Spring Framework, Heroku, Junit, Seleniun, Swagger, Java, Vue, PostGreeSQL
+
+5 - Estrutura de dados  (UML | Está pronto, com a @Marcela)
+
+6 - Estrutura Git / Git flow (teremos ?)
+
+7 - Camadas da aplicação
+
+8 - Testes (gráficos - @Marcela)
+
+9 - Acesso ao sistema (QR Code)
+
+10 - Equipe nomes e linkedin
+*pegar com as meninas
+
+
