@@ -2,39 +2,35 @@ package br.com.codenation.loglab.dto;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
+
 import br.com.codenation.loglab.entity.User;
 
 public class LogDTO {
 
-	private Integer id;
-	private String level;
-	private String titleError;
+	@NotBlank private String level;
+	@NotNull private String titleError;
 	private User user;
 	private String details;
-	private LocalDateTime createdAt;
+	@NotNull private LocalDateTime createdAt;
 	private Long quantity;
 	boolean filed;
 	private String environment;
 
-	public LogDTO(Integer id, String level, String titleError, User userId, String details, LocalDateTime createdAt,
-			Long quantity, boolean filed, String environment) {
-		this.id = id;
+	
+
+	public LogDTO(@NotNull String level, @NotNull String titleError, User user, String details, @NotNull LocalDateTime createdAt, Long quantity,
+			boolean filed, String environment) {
 		this.level = level;
 		this.titleError = titleError;
-		this.user = userId;
+		this.user = user;
 		this.details = details;
 		this.createdAt = createdAt;
 		this.quantity = quantity;
 		this.filed = filed;
 		this.environment = environment;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getLevel() {

@@ -35,19 +35,26 @@ public class User {
 	@NotBlank
 	@NotNull
 	private String sourceIp;
-	
+
 	public User() {
-		
+
+	}
+
+	public User(
+			@Email(message = "E-mail inválido!") @NotEmpty(message = "O campo e-mail é obrigatório") @NotNull String email,
+			@NotBlank @NotNull @NotEmpty(message = "O campo senha é obrigatório") String password,
+			@NotBlank @NotNull String sourceIp) {
+		this.email = email;
+		this.password = password;
+		this.sourceIp = sourceIp;
 	}
 
 	public User(Integer id,
 			@Email(message = "E-mail inválido!") @NotEmpty(message = "O campo e-mail é obrigatório") @NotNull String email,
 			@NotBlank @NotNull @NotEmpty(message = "O campo senha é obrigatório") String password,
 			@NotBlank @NotNull String sourceIp) {
+		this(email, password, sourceIp);
 		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.sourceIp = sourceIp;
 	}
 
 	public Integer getId() {

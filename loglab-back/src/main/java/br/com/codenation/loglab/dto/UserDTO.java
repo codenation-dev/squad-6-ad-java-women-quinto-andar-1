@@ -1,30 +1,37 @@
 package br.com.codenation.loglab.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserDTO {
 
-	private Integer id;
+	@Email(message = "{email.not.blank}")
+	@NotEmpty(message = "{email.not.empty}")
+	@NotNull
 	private String email;
+
+	@NotBlank(message = "{password.not.blank}")
+	@NotNull(message = "{password.not.null}")
+	@NotEmpty(message = "{password.not.empty}")
 	private String password;
+
+	@NotBlank(message = "{sourceIp.not.blank}")
+	@NotNull(message = "{password.not.null}")
 	private String sourceIp;
 
 	public UserDTO() {
 
 	}
 
-	public UserDTO(Integer id, String email, String password, String sourceIp) {
+	public UserDTO(@Email(message = "{email.not.blank}") @NotEmpty(message = "{email.not.empty}") @NotNull String email,
+			@NotBlank(message = "{password.not.blank}") @NotNull(message = "{password.not.null}") @NotEmpty(message = "{password.not.empty}") String password,
+			@NotBlank(message = "{sourceIp.not.blank}") @NotNull(message = "{password.not.null}") String sourceIp) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.sourceIp = sourceIp;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getEmail() {

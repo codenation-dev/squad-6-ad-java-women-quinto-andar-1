@@ -8,9 +8,10 @@ import br.com.codenation.loglab.entity.Log;
 
 public class LogMapper {
 
+	
 	public LogDTO toLogDTO(Log log) {
-		return new LogDTO(log.getId(),
-				log.getLevelType(), log.getTitleError(),
+		return new LogDTO(log.getLevelType(),
+				log.getTitleError(),
 				log.getUser(),
 				log.getDetails(),
 				log.getCreatedAt(),
@@ -22,8 +23,7 @@ public class LogMapper {
 	public List<LogDTO> toLogDTOs(List<Log> logs){
 		List<LogDTO> lista = new ArrayList<>();
 		for(Log l : logs) {
-			lista.add(new LogDTO(l.getId(),
-					l.getLevelType(),
+			lista.add(new LogDTO(l.getLevelType(),
 					l.getTitleError(),
 					l.getUser(),
 					l.getDetails(),
@@ -36,7 +36,7 @@ public class LogMapper {
 	}
 	
 	public Log toLog (LogDTO logDTO) {
-		return new Log(logDTO.getId(),
+		return new Log(
 				logDTO.getLevel(),
 				logDTO.getTitleError(),
 				logDTO.getUser(),

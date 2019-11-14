@@ -3,6 +3,8 @@ package br.com.codenation.loglab.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class LogController {
 	private LogMapper logMapper = new LogMapper();
 	
 	@PostMapping
-	public ResponseEntity<LogDTO> createUser(@RequestBody LogDTO logDTO) {
+	public ResponseEntity<LogDTO> createUser(@RequestBody @Valid LogDTO logDTO) {
 		Log log= logService.save(logMapper.toLog(logDTO));
 		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
 
