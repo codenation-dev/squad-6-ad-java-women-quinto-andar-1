@@ -2,6 +2,8 @@ package br.com.codenation.loglab.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,7 @@ public class UserController {
 	private UserMapper userMapper = new UserMapper();
 	
 	@PostMapping
-	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
 

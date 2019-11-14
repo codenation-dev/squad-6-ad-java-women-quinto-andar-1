@@ -7,12 +7,12 @@ import javax.validation.constraints.NotNull;
 
 public class UserDTO {
 
-	@Email(message = "{email.not.blank}")
+	@Email(message = "{email.not.valid}")
 	@NotEmpty(message = "{email.not.empty}")
 	@NotNull
 	private String email;
 
-	@NotBlank(message = "{password.not.blank}")
+	@NotBlank(message = "{password.not.valid}")
 	@NotNull(message = "{password.not.null}")
 	@NotEmpty(message = "{password.not.empty}")
 	private String password;
