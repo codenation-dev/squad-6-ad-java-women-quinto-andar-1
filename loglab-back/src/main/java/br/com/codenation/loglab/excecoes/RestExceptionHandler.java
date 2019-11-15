@@ -11,28 +11,26 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import br.com.codenation.loglab.excecoes.error.ErrorObject;
-import br.com.codenation.loglab.excecoes.error.ErrorResponse;
-
 @RestControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler{
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-	    List<ErrorObject> errors = getErrors(ex);
-	    ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
-	    return new ResponseEntity<>(errorResponse, status);
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		List<ErrorObject> errors = getErrors(ex);
+		ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
+		return new ResponseEntity<>(errorResponse, status);
 	}
 
 	private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status,
 			List<ErrorObject> errors) {
-		 return new ErrorResponse("Requisição possui campos inválidos", status.value(),
-	                status.getReasonPhrase(), ex.getBindingResult().getObjectName(), errors);
+		return new ErrorResponse("Requisição possui campos inválidos", status.value(), status.getReasonPhrase(),
+				ex.getBindingResult().getObjectName(), errors);
 	}
 
 	private List<ErrorObject> getErrors(MethodArgumentNotValidException ex) {
 		return ex.getBindingResult().getFieldErrors().stream()
-				.map(errors -> new ErrorObject(errors.getDefaultMessage(), errors.getField(), errors.getRejectedValue()))
+				.map(error -> new ErrorObject(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
 				.collect(Collectors.toList());
 	}
 }
