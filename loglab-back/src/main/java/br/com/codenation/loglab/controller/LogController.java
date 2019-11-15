@@ -30,9 +30,9 @@ public class LogController {
 	
 	@PostMapping
 	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
+	
 		Log log= logService.save(logMapper.toLog(logDTO));
 		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
-
 	}
 	
 	@GetMapping("/{id}")

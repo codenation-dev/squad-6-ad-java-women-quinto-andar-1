@@ -25,13 +25,11 @@ public class User {
 	private String email;
 
 	@NotBlank
-	@NotNull
 	@NotEmpty(message = "O campo senha é obrigatório")
 	private String password;
 
 	@Column(name = "origin")
 	@NotBlank
-	@NotNull
 	private String sourceIp;
 
 	public User() {

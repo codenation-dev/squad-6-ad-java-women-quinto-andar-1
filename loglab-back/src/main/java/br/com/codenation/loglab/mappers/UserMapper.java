@@ -17,9 +17,9 @@ public class UserMapper {
 				user.getSourceIp());
 	}
 	
-	public List<UserDTO> toUserDTOs(List<User> users){
+	public List<UserDTO> toUserDTOs(List<UserDTO> users){
 		List<UserDTO>lista = new ArrayList<>();
-		for (User u : users) {
+		for (UserDTO u : users) {
 			lista.add(new UserDTO(u.getEmail(),
 					u.getPassword(),
 					u.getSourceIp()));

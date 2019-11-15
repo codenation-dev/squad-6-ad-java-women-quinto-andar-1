@@ -7,7 +7,6 @@ import br.com.codenation.loglab.dto.LogDTO;
 import br.com.codenation.loglab.entity.Log;
 
 public class LogMapper {
-
 	
 	public LogDTO toLogDTO(Log log) {
 		return new LogDTO(log.getLevelType(),
@@ -18,7 +17,7 @@ public class LogMapper {
 				log.getQuantity(),
 				log.getFiled(),
 				log.getEnvironment());
-		}
+	}
 		
 	public List<LogDTO> toLogDTOs(List<Log> logs){
 		List<LogDTO> lista = new ArrayList<>();
