@@ -1,4 +1,4 @@
-package br.com.codenation.loglab.excecoes.error;
+package br.com.codenation.loglab.excecoes;
 
 import java.util.List;
 
@@ -17,5 +17,27 @@ public class ErrorResponse {
 		this.objectName = objectName;
 		this.errors = errors;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getObjectName() {
+		return objectName;
+	}
+
+	public List<ErrorObject> getErrors() {
+		return errors;
+	}
+	
+	
 
 }

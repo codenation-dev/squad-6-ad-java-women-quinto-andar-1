@@ -1,4 +1,4 @@
-package br.com.codenation.loglab.excecoes.error;
+package br.com.codenation.loglab.excecoes;
 
 public class ErrorObject {
 
@@ -10,6 +10,19 @@ public class ErrorObject {
 		this.message = message;
 		this.field = field;
 		this.parameter = parameter;
+		
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public String getField() {
+		return field;
+	}
+
+	public Object getParameter() {
+		return parameter;
 	}
 
 }
