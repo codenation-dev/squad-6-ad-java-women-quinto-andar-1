@@ -9,8 +9,8 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.codenation</groupId>
-	<artifactId>loglab</artifactId>
+	<groupId>loglab</groupId>
+	<artifactId>br.com.codenation.loglab</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Loglab</name>
 	<description>Central de erros - Desafio Final</description>
