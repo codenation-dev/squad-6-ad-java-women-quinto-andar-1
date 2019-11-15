@@ -1,4 +1,4 @@
-package br.com.codenation.loglab.excecoes;
+package br.com.codenation.loglab.excecoes.jsonBody;
 
 import java.util.List;
 
