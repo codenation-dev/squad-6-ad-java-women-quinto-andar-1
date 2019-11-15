@@ -10,11 +10,15 @@ import br.com.codenation.loglab.entity.User;
 
 public class LogDTO {
 
-	@NotBlank private String level;
-	@NotNull private String titleError;
+	@NotBlank(message = "{level.not.blank}")
+	private String level;
+	@NotBlank(message = "titleError.not.blank")
+	private String titleError;
+	@NotBlank(message = "user.not.blank")
 	private User user;
 	private String details;
-	@NotNull private LocalDateTime createdAt;
+	@NotNull 
+	private LocalDateTime createdAt;
 	private Long quantity;
 	boolean filed;
 	private String environment;
