@@ -22,8 +22,6 @@ public class User {
 	private Integer id;
 
 	@Email(message = "E-mail inválido!")
-	@NotEmpty(message = "O campo e-mail é obrigatório")
-	@NotNull
 	private String email;
 
 	@NotBlank
