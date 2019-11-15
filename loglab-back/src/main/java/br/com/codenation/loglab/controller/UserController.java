@@ -26,12 +26,11 @@ public class UserController {
 	@Autowired
 	private UserServiceInterface userService;
 	private UserMapper userMapper = new UserMapper();
-	
+
 	@PostMapping
 	public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
-
 	}
 
 	@GetMapping("/{id}")
