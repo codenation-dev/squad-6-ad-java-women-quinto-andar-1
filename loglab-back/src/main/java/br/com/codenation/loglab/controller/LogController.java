@@ -29,7 +29,7 @@ public class LogController {
 	private LogMapper logMapper = new LogMapper();
 	
 	@PostMapping
-	public ResponseEntity<LogDTO> createUser(@RequestBody @Valid LogDTO logDTO) {
+	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
 		Log log= logService.save(logMapper.toLog(logDTO));
 		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
 
