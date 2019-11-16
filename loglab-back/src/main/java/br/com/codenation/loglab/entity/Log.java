@@ -25,7 +25,12 @@ public class Log {
     private String titleError;
 
     @ManyToOne
+<<<<<<< Updated upstream
     private User user;
+=======
+    @JoinColumn(name="user_id")//----------------
+    private Usuario usuario;
+>>>>>>> Stashed changes
 
     private String details;
 
@@ -39,4 +44,87 @@ public class Log {
     private Boolean filed;
 
     private String environment;
+<<<<<<< Updated upstream
+=======
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Log() {
+    }
+
+    public Log(Integer id, @NotNull String levelType, @NotNull String titleError, Usuario usuario, String details,
+               @NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment) {
+        this.id = id;
+        this.levelType = levelType;
+        this.titleError = titleError;
+        this.usuario = usuario;
+        this.details = details;
+        this.createdAt = createdAt;
+        this.quantity = quantity;
+        this.filed = filed;
+        this.environment = environment;
+    }
+
+    public String getLevelType() {
+        return levelType;
+    }
+
+    public void setLevelType(String levelType) {
+        this.levelType = levelType;
+    }
+
+    public String getTitleError() {
+        return titleError;
+    }
+
+    public void setTitleError(String titleError) {
+        this.titleError = titleError;
+    }
+
+    public Usuario getUser() {
+        return usuario;
+    }
+
+    public void setUser(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
+    public Boolean getFiled() {
+        return filed;
+    }
+
+    public void setFiled(Boolean filed) {
+        this.filed = filed;
+    }
+
+    public String getEnvironment() {
+        return environment;
+    }
+>>>>>>> Stashed changes
 }
