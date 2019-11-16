@@ -2,7 +2,6 @@ package br.com.codenation.loglab.dto;
 
 import java.time.LocalDateTime;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 import com.sun.istack.NotNull;
@@ -16,7 +15,7 @@ public class LogDTO {
 	@NotNull
 	private UserDTO userDTO;
 	private String details;
-	@NotNull 
+	@NotNull
 	private LocalDateTime createdAt;
 	private Long quantity;
 	boolean filed;
@@ -26,9 +25,8 @@ public class LogDTO {
 	}
 
 	public LogDTO(@NotBlank(message = "{level.not.blank}") String level,
-			@NotBlank(message = "{titleError.not.blank}") String titleError,
-			 @NotNull UserDTO userDTO, String details, LocalDateTime createdAt,
-			Long quantity, boolean filed, String environment) {
+			@NotBlank(message = "{titleError.not.blank}") String titleError, @NotNull UserDTO userDTO, String details,
+			LocalDateTime createdAt, Long quantity, boolean filed, String environment) {
 		this.level = level;
 		this.titleError = titleError;
 		this.userDTO = userDTO;

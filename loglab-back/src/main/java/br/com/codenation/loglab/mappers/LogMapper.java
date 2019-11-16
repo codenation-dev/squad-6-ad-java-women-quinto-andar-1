@@ -6,7 +6,6 @@ import java.util.List;
 import br.com.codenation.loglab.dto.LogDTO;
 import br.com.codenation.loglab.dto.UserDTO;
 import br.com.codenation.loglab.entity.Log;
-import br.com.codenation.loglab.entity.User;
 
 public class LogMapper {
 	

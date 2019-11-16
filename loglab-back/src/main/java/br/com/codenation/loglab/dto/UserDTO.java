@@ -22,20 +22,10 @@ public class UserDTO {
 	public UserDTO(@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
 			@NotBlank(message = "{password.not.blank}") String password,
 			@NotBlank(message = "{sourceIp.not.blank}") String sourceIp) {
-		super();
 		this.email = email;
 		this.password = password;
 		this.sourceIp = sourceIp;
 	}
-
-
-//	public UserDTO(String email,
-//			String password,
-//			String sourceIp) {
-//		this.email = email;
-//		this.password = password;
-//		this.sourceIp = sourceIp;
-//	}
 
 	public String getEmail() {
 		return email;

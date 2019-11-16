@@ -34,12 +34,12 @@ public class Log {
     private String titleError;
 
     @ManyToOne
-    @JoinColumn(name="user_id")//----------------
+    @JoinColumn(name="user_id")
     private User user;
 
     private String details;
 
-    @Column(name = "created_at")//-------------
+    @Column(name = "created_at")
     @CreatedDate
     @NotNull
     private LocalDateTime createdAt;

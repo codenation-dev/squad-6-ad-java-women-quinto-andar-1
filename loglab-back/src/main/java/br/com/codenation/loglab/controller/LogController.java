@@ -23,6 +23,7 @@ public class LogController {
 	private LogServiceInterface logService;
 	private LogMapper logMapper = new LogMapper();
 	
+	//Por enquanto controller nao tera cadastro
 //	@PostMapping
 //	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
 //		Log log = logService.save(logMapper.toLog(logDTO));
