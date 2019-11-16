@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.codenation.loglab.dto.LogDTO;
+import br.com.codenation.loglab.dto.UserDTO;
 import br.com.codenation.loglab.entity.Log;
+import br.com.codenation.loglab.entity.User;
 
 public class LogMapper {
 	
 	public LogDTO toLogDTO(Log log) {
 		return new LogDTO(log.getLevelType(),
 				log.getTitleError(),
-				log.getUser(),
+				new UserDTO(
+						log.getUser().getEmail(),
+						log.getUser().getPassword(),
+						log.getUser().getSourceIp()),
 				log.getDetails(),
 				log.getCreatedAt(),
 				log.getQuantity(),
@@ -20,25 +25,20 @@ public class LogMapper {
 	}
 		
 	public List<LogDTO> toLogDTOs(List<Log> logs){
-		List<LogDTO> lista = new ArrayList<>();
+		List<LogDTO> list = new ArrayList<>();
 		for(Log l : logs) {
-			lista.add(new LogDTO(l.getLevelType(),
-					l.getTitleError(),
-					l.getUser(),
-					l.getDetails(),
-					l.getCreatedAt(),
-					l.getQuantity(),
-					l.getFiled(),
-					l.getEnvironment()));
+			list.add(toLogDTO(l));
 		}
-		return lista;
-	}
-	
+		return list;
+	}	
 	public Log toLog (LogDTO logDTO) {
 		return new Log(
 				logDTO.getLevel(),
 				logDTO.getTitleError(),
-				logDTO.getUser(),
+				new User(
+						logDTO.getUser().getEmail(),
+						logDTO.getUser().getPassword(),
+						logDTO.getUser().getSourceIp()),
 				logDTO.getDetails(),
 				logDTO.getCreatedAt(),
 				logDTO.getQuantity(),

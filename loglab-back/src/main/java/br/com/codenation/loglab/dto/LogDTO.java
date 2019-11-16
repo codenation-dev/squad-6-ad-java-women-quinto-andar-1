@@ -17,7 +17,7 @@ public class LogDTO {
 	private String titleError;
 //	@NotBlank(message = "{user.not.blank}")
 	@Valid
-	private User user;
+	private UserDTO user;
 	private String details;
 	@NotNull 
 	private LocalDateTime createdAt;
@@ -27,7 +27,7 @@ public class LogDTO {
 
 	
 
-	public LogDTO(@NotNull String level, @NotNull String titleError, @NotNull User user, String details, @NotNull LocalDateTime createdAt, Long quantity,
+	public LogDTO(@NotNull String level, @NotNull String titleError, @NotNull UserDTO user, String details, @NotNull LocalDateTime createdAt, Long quantity,
 			boolean filed, String environment) {
 		this.level = level;
 		this.titleError = titleError;
@@ -55,11 +55,11 @@ public class LogDTO {
 		this.titleError = titleError;
 	}
 
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 
