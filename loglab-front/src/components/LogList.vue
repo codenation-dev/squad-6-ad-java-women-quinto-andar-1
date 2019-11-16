@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import apiService from './../services/apiService'
+
 export default {
   data() {
     return {
@@ -57,6 +59,9 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    apiService.orderByLevel('error');
   },
   methods: {
     logPage(id) {
