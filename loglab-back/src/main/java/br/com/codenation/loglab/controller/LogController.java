@@ -38,7 +38,7 @@ public class LogController {
 		Optional<Log> log = logService.findById(id);
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
-	
+
 	@GetMapping("/level/{level}")
 	public ResponseEntity<LogDTO> findByLevelType(@PathVariable String level){
 		Log log = logService.findByLevel(level);
