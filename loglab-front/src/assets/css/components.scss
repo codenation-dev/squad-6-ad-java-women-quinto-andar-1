@@ -1,0 +1,89 @@
+@import 'variables';
+
+input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.default-padding{
+    padding: 10px 60px;
+}
+
+.fullscreen{
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button{
+    border: 1px solid $primaryColor;
+    background-color: transparent;
+    padding: 10px;
+    color: $primaryColor;
+    min-width: 150px;
+    border-radius: 4px;
+    transition: all 0.25s ease-in-out;
+
+    &:hover{
+        background-color: $primaryColor;
+        color: white;
+        transition: all 0.25s ease-in-out;
+    }
+}
+
+.text-align-left{
+    text-align: left;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-items-left{
+    align-items: left;
+}
+
+.align-items-right{
+    align-items: right;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.justify-content-left{
+    justify-content: left;
+}
+
+.justify-content-right{
+    justify-content: right;
+}
+
+.justify-content-space-between{
+    justify-content: space-between;
+}
+
+.w-100{
+    width: 100%
+}
+.w-75{
+    width: 75%
+}
+.w-50{
+    width: 50%
+}
+.w-25{
+    width: 25%
+}
+.w-10{
+    width: 10%
+}
