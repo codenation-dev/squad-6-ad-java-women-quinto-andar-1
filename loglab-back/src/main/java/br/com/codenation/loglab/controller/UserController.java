@@ -24,15 +24,14 @@ public class UserController {
 	private UserServiceInterface userService;
 	private UserMapper userMapper = new UserMapper();
 
-	@PostMapping
+	@PostMapping(path = "user")
 	public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDTO> findById(@PathVariable Integer id, @AuthenticationPrincipal UserDetails userDetails) {
-		System.out.println(userDetails);
+	public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
 		Optional<User> user = userService.findById(id);
 		return ResponseEntity.ok(userMapper.toUserDTO(user.get()));
 	}
