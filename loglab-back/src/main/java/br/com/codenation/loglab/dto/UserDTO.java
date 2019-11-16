@@ -2,8 +2,6 @@ package br.com.codenation.loglab.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 public class UserDTO {
 
@@ -21,14 +19,23 @@ public class UserDTO {
 
 	}
 
-	public UserDTO(@Email(message = "{email.not.blank}") @NotEmpty(message = "{email.not.empty}") @NotNull String email,
-			@NotBlank(message = "{password.not.blank}") @NotNull(message = "{password.not.null}") @NotEmpty(message = "{password.not.empty}") String password,
-			@NotBlank(message = "{sourceIp.not.blank}") @NotNull(message = "{password.not.null}") String sourceIp) {
+	public UserDTO(@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
+			@NotBlank(message = "{password.not.blank}") String password,
+			@NotBlank(message = "{sourceIp.not.blank}") String sourceIp) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.sourceIp = sourceIp;
 	}
+
+
+//	public UserDTO(String email,
+//			String password,
+//			String sourceIp) {
+//		this.email = email;
+//		this.password = password;
+//		this.sourceIp = sourceIp;
+//	}
 
 	public String getEmail() {
 		return email;

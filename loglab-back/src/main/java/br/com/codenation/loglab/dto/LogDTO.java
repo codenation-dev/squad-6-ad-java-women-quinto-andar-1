@@ -7,17 +7,14 @@ import javax.validation.constraints.NotBlank;
 
 import com.sun.istack.NotNull;
 
-import br.com.codenation.loglab.entity.User;
-
 public class LogDTO {
 
 	@NotBlank(message = "{level.not.blank}")
 	private String level;
 	@NotBlank(message = "{titleError.not.blank}")
 	private String titleError;
-//	@NotBlank(message = "{user.not.blank}")
-	@Valid
-	private UserDTO user;
+	@NotNull
+	private UserDTO userDTO;
 	private String details;
 	@NotNull 
 	private LocalDateTime createdAt;
@@ -25,13 +22,16 @@ public class LogDTO {
 	boolean filed;
 	private String environment;
 
-	
+	public LogDTO() {
+	}
 
-	public LogDTO(@NotNull String level, @NotNull String titleError, @NotNull UserDTO user, String details, @NotNull LocalDateTime createdAt, Long quantity,
-			boolean filed, String environment) {
+	public LogDTO(@NotBlank(message = "{level.not.blank}") String level,
+			@NotBlank(message = "{titleError.not.blank}") String titleError,
+			 @NotNull UserDTO userDTO, String details, LocalDateTime createdAt,
+			Long quantity, boolean filed, String environment) {
 		this.level = level;
 		this.titleError = titleError;
-		this.user = user;
+		this.userDTO = userDTO;
 		this.details = details;
 		this.createdAt = createdAt;
 		this.quantity = quantity;
@@ -55,12 +55,12 @@ public class LogDTO {
 		this.titleError = titleError;
 	}
 
-	public UserDTO getUser() {
-		return user;
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setUser(UserDTO user) {
-		this.user = user;
+	public void setUserDTO(UserDTO user) {
+		this.userDTO = user;
 	}
 
 	public String getDetails() {

@@ -31,18 +31,18 @@ public class LogMapper {
 		}
 		return list;
 	}	
-	public Log toLog (LogDTO logDTO) {
-		return new Log(
-				logDTO.getLevel(),
-				logDTO.getTitleError(),
-				new User(
-						logDTO.getUser().getEmail(),
-						logDTO.getUser().getPassword(),
-						logDTO.getUser().getSourceIp()),
-				logDTO.getDetails(),
-				logDTO.getCreatedAt(),
-				logDTO.getQuantity(),
-				logDTO.getFiled(),
-				logDTO.getEnvironment());
-	}
+//	public Log toLog (LogDTO logDTO) {
+//		return new Log(
+//				logDTO.getLevel(),
+//				logDTO.getTitleError(),
+//				new User(
+//						logDTO.getUserDTO().getEmail(),
+//						logDTO.getUserDTO().getPassword(),
+//						logDTO.getUserDTO().getSourceIp()),
+//				logDTO.getDetails(),
+//				logDTO.getCreatedAt(),
+//				logDTO.getQuantity(),
+//				logDTO.getFiled(),
+//				logDTO.getEnvironment());
+//	}
 }
