@@ -3,7 +3,7 @@ INSERT INTO user(id, email, password, origin)
 		(2, 'marcella@gamil', '123', '1.7.123.0'),
 		(3, 'kaori@gamil', '5678', '4.0.123.0'),
 		(4, 'stepani@gamil', '234', '7.5.345.7'),
-		(5, 'anapaulafelic@hotmail.com', '123', '1.5.315.7');
+		(5, 'anapaulafelic@hotmail.com', '$2a$10$js5mHwdZ7.KKMZ2QrFycJup5T7g8LQL4OTff4ArQiN50Fgx64B9bW', '1.5.315.7');
 				
 INSERT INTO log(id, level, title, user_id, details, created_at, frequency, filed, environment)
 	VALUES(1, 'error', 'acceleratoin.dev.add', 1, 'detalhes aqui', '1509-01-08 12:02:23', 3408, true, 'dev'),

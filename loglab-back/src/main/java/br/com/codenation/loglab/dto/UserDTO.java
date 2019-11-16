@@ -1,5 +1,7 @@
 package br.com.codenation.loglab.dto;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 public class UserDTO {
 
 	private Integer id;
@@ -40,7 +42,11 @@ public class UserDTO {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		//this.password = password;
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = (passwordEncoder.encode(password));	
+		//this.password = password;
+		this.password = hashedPassword;
 	}
 
 	public String getSourceIp() {
