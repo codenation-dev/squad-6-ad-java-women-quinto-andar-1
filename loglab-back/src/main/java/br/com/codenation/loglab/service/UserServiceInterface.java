@@ -8,4 +8,6 @@ public interface UserServiceInterface {
 	public Optional<User> findById(Integer id);
 
 	public User save(User user);
+
+	public User findByEmail(String email);
 }

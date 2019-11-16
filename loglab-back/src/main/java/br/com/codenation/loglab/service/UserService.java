@@ -2,7 +2,6 @@ package br.com.codenation.loglab.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.codenation.loglab.entity.User;
@@ -13,10 +12,6 @@ public class UserService implements UserServiceInterface {
 
 	private UserRepository userRepository;
 
-	@Autowired
-	UserService(UserRepository repository) {
-		this.userRepository = repository;
-	}
 
 	@Override
 	public Optional<User> findById(Integer id) {
@@ -26,5 +21,10 @@ public class UserService implements UserServiceInterface {
 	@Override
 	public User save(User user) {
 		return userRepository.save(user);
+	}
+
+	@Override
+	public User findByEmail(String email){
+		return userRepository.findByEmail(email);
 	}
 }

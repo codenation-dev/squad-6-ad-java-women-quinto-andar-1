@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -27,12 +28,14 @@ public class User {
 	@NotBlank
 	@NotNull
 	@NotEmpty(message = "O campo senha é obrigatório")
+	@JsonIgnore
 	private String password;
 
 	@Column(name = "origin")
 	@NotBlank
 	@NotNull
 	private String sourceIp;
+
 
 	public User() {
 

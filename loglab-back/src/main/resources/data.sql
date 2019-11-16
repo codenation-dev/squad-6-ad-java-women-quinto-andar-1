@@ -1,7 +1,7 @@
 INSERT INTO user(id, email, password, origin)
 	VALUES(1, 'paty@gamil', '1234567', '1.4.567.8'),
 		(2, 'marcella@gamil', '123', '1.7.123.0'),
-		(3, 'kaori@gamil', '5678', '4.0.123.0'),
+		(3, 'kaori@gamil', '$2a$10$VkT2gwgjoYQOGHajMUeiNuYphmu4dJRJ85MuzRLP4rN1hQJ6wrtmq', '4.0.123.0'),
 		(4, 'stepani@gamil', '234', '7.5.345.7');
 		
 INSERT INTO log(id, level, title, user_id, details, created_at, frequency, filed, environment)
