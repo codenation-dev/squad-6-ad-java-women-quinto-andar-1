@@ -14,4 +14,5 @@ public interface LogServiceInterface  {
    public List<Log> orderByQuantity();
    public Log save(Log log);
    public List<Log> findAll();
+   public List<Log> findByEnvironment(String environment);
 }

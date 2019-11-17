@@ -1,6 +1,5 @@
 package br.com.codenation.loglab.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +36,22 @@ public class LogController {
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
 	
+	@GetMapping("/logs")
+	public ResponseEntity<List<LogDTO>> logs(){
+		List<Log> logs = logService.findAll();
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
+	}
+	
 	@GetMapping("/level/{level}")
 	public ResponseEntity<List<LogDTO>> findByLevelType(@PathVariable String level){
-		List<Log> log = logService.findByLevel(level);
-		return ResponseEntity.ok(logMapper.toLogDTOs(log));
+		List<Log> logs = logService.findByLevel(level);
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
+	}
+	
+	@GetMapping("/environment/{environment}")
+	public ResponseEntity<List<LogDTO>> findByEnvironment(@PathVariable String environment){
+		List<Log> logs = logService.findByEnvironment(environment);
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
 	
 	@GetMapping("/orderLevel")
@@ -55,10 +66,5 @@ public class LogController {
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 	
-	@GetMapping("/logs")
-	public ResponseEntity<List<LogDTO>> logs(){
-		List<Log> logs = logService.findAll();
-		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
-	}
 	
 }

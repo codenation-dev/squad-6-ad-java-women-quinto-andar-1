@@ -54,4 +54,9 @@ public class LogService implements  LogServiceInterface{
 	public List<Log> findAll() {
 		return logRepository.findAll();
 	}
+
+	@Override
+	public List<Log> findByEnvironment(String environment) {
+		return logRepository.findByEnvironment(environment);
+	}
 }
