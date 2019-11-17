@@ -11,12 +11,11 @@ import br.com.codenation.loglab.entity.Log;
 @Repository
 public interface LogRepository extends JpaRepository<Log, Integer> {
 
-	public Log findByLevelType(String levelType);
+	public List<Log> findByLevelType(String levelType);
 
 	public Log findByQuantity(Long quantity);
 
-	@Query("SELECT log FROM Log log ORDER BY log.levelType")
-	public List<Log> findAllOrderByLevelType();
+	public List<Log> findAllByOrderByLevelType();
 
 	public List<Log> OrderByQuantity();
 

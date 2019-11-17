@@ -26,7 +26,7 @@ public class LogService implements  LogServiceInterface{
     }
 
     @Override
-    public Log findByLevel(String level) {
+    public List<Log> findByLevel(String level) {
         return logRepository.findByLevelType(level) ;
     }
 
@@ -36,8 +36,8 @@ public class LogService implements  LogServiceInterface{
     }
 
     @Override
-    public List<Log> findAllOrderByLevelType() {
-        return logRepository.findAllOrderByLevelType();
+    public List<Log> findAllByOrderByLevelType() {
+        return logRepository.findAllByOrderByLevelType();
     }
 
     @Override
@@ -48,5 +48,10 @@ public class LogService implements  LogServiceInterface{
 	@Override
 	public Log save(Log log) {
 		return logRepository.save(log);
+	}
+
+	@Override
+	public List<Log> findAll() {
+		return logRepository.findAll();
 	}
 }
