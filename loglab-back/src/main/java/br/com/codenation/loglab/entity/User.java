@@ -33,7 +33,7 @@ public class User extends AbstractEntity {
 	@NotBlank
 	@NotNull
 	@NotEmpty(message = "O campo senha é obrigatório")
-	@JsonIgnore
+	//@JsonIgnore
 	private String password;
 
 	@Column(name = "origin")
