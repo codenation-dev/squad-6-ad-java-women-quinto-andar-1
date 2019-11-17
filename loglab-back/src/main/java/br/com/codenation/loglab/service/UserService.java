@@ -18,7 +18,6 @@ public class UserService implements UserServiceInterface {
 		this.userRepository = repository;
 	}
 
-//precisa instanciar a repository
 	@Override
 	public Optional<User> findById(Integer id) {
 		return userRepository.findById(id);

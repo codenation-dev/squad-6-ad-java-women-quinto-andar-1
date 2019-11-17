@@ -1,30 +1,30 @@
 package br.com.codenation.loglab.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class UserDTO {
 
-	private Integer id;
+	@Email(message = "{email.not.valid}")
+	@NotBlank(message = "{email.not.blank}")
 	private String email;
+
+	@NotBlank(message = "{password.not.blank}")
 	private String password;
+
+	@NotBlank(message = "{sourceIp.not.blank}")
 	private String sourceIp;
 
 	public UserDTO() {
 
 	}
 
-	public UserDTO(Integer id, String email, String password, String sourceIp) {
-		super();
-		this.id = id;
+	public UserDTO(@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
+			@NotBlank(message = "{password.not.blank}") String password,
+			@NotBlank(message = "{sourceIp.not.blank}") String sourceIp) {
 		this.email = email;
 		this.password = password;
 		this.sourceIp = sourceIp;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getEmail() {

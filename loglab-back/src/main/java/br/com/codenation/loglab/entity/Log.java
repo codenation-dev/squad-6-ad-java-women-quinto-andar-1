@@ -1,11 +1,21 @@
 package br.com.codenation.loglab.entity;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import br.com.codenation.loglab.entity.User;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -24,12 +34,12 @@ public class Log {
     private String titleError;
 
     @ManyToOne
-    @JoinColumn(name="user_id")//----------------
+    @JoinColumn(name="user_id")
     private User user;
 
     private String details;
 
-    @Column(name = "created_at")//-------------
+    @Column(name = "created_at")
     @CreatedDate
     @NotNull
     private LocalDateTime createdAt;
@@ -47,10 +57,10 @@ public class Log {
 
     public Log() {
     }
+    
 
-    public Log(Integer id, @NotNull String levelType, @NotNull String titleError, User user, String details,
+    public Log(@NotNull String levelType, @NotNull String titleError, User user, String details,
                @NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment) {
-        this.id = id;
         this.levelType = levelType;
         this.titleError = titleError;
         this.user = user;
@@ -59,6 +69,13 @@ public class Log {
         this.quantity = quantity;
         this.filed = filed;
         this.environment = environment;
+    }
+    
+    public Log(Integer id, @NotNull String levelType, @NotNull String titleError, User user, String details,
+    		@NotNull LocalDateTime createdAt, Long quantity, Boolean filed, String environment) {
+    	this(levelType, titleError, user, details,
+    			createdAt, quantity, filed, environment);
+    	this.id = id;
     }
 
     public String getLevelType() {

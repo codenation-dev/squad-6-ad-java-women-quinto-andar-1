@@ -2,6 +2,8 @@ package br.com.codenation.loglab.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,6 @@ public class UserController {
 	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
-
 	}
 
 	@CrossOrigin(origins = "http://localhost:8080")

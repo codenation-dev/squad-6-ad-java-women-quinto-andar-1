@@ -2,39 +2,39 @@ package br.com.codenation.loglab.dto;
 
 import java.time.LocalDateTime;
 
-import br.com.codenation.loglab.entity.User;
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
 
 public class LogDTO {
 
-	private Integer id;
+	@NotBlank(message = "{level.not.blank}")
 	private String level;
+	@NotBlank(message = "{titleError.not.blank}")
 	private String titleError;
-	private User user;
+	@NotNull
+	private UserDTO userDTO;
 	private String details;
+	@NotNull
 	private LocalDateTime createdAt;
 	private Long quantity;
 	boolean filed;
 	private String environment;
 
-	public LogDTO(Integer id, String level, String titleError, User userId, String details, LocalDateTime createdAt,
-			Long quantity, boolean filed, String environment) {
-		this.id = id;
+	public LogDTO() {
+	}
+
+	public LogDTO(@NotBlank(message = "{level.not.blank}") String level,
+			@NotBlank(message = "{titleError.not.blank}") String titleError, @NotNull UserDTO userDTO, String details,
+			LocalDateTime createdAt, Long quantity, boolean filed, String environment) {
 		this.level = level;
 		this.titleError = titleError;
-		this.user = userId;
+		this.userDTO = userDTO;
 		this.details = details;
 		this.createdAt = createdAt;
 		this.quantity = quantity;
 		this.filed = filed;
 		this.environment = environment;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getLevel() {
@@ -53,12 +53,12 @@ public class LogDTO {
 		this.titleError = titleError;
 	}
 
-	public User getUser() {
-		return user;
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDTO(UserDTO user) {
+		this.userDTO = user;
 	}
 
 	public String getDetails() {

@@ -18,7 +18,7 @@
         <input type="checkbox" />
       </div>
       <div class="w-25 d-flex align-items-center justify-content-center">
-        <div class="badge">{{log.environment}}</div>
+        <div class="badge">{{log.level}}</div>
       </div>
       <div class="w-50 description">{{log.details}}</div>
       <div class="w-25">{{log.quantity}}</div>

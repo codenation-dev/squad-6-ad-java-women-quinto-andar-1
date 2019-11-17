@@ -8,9 +8,11 @@ import br.com.codenation.loglab.entity.Log;
 public interface LogServiceInterface  {
 
    public Optional<Log> findById(Integer id);
-   public Log findByLevel(String level);
+   public List<Log> findByLevel(String level);
    public Log findByQuantity(Long quantity);
-   public List<Log> findAllOrderByLevelType();
+   public List<Log> findAllByOrderByLevelType();
    public List<Log> orderByQuantity();
    public Log save(Log log);
+   public List<Log> findAll();
+   public List<Log> findByEnvironment(String environment);
 }

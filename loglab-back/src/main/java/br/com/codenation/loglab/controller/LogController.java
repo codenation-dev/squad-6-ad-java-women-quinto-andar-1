@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +19,13 @@ public class LogController {
 	@Autowired
 	private LogServiceInterface logService;
 	private LogMapper logMapper = new LogMapper();
-
-	@CrossOrigin(origins = "http://localhost:8080")
-	@PostMapping
-	public ResponseEntity<LogDTO> createUser(@RequestBody LogDTO logDTO) {
-		Log log= logService.save(logMapper.toLog(logDTO));
-		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
-
-	}
+	
+	//Por enquanto controller nao tera cadastro
+//	@PostMapping
+//	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
+//		Log log = logService.save(logMapper.toLog(logDTO));
+//		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
+//	}
 
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/{id}")
@@ -37,16 +35,30 @@ public class LogController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:8080")
+	@GetMapping("/logs")
+	public ResponseEntity<List<LogDTO>> logs(){
+		List<Log> logs = logService.findAll();
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
+	}
+
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/level/{level}")
-	public ResponseEntity<LogDTO> findByLevelType(@PathVariable String level){
-		Log log = logService.findByLevel(level);
-		return ResponseEntity.ok(logMapper.toLogDTO(log));
+	public ResponseEntity<List<LogDTO>> findByLevelType(@PathVariable String level){
+		List<Log> logs = logService.findByLevel(level);
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
+	}
+
+	@CrossOrigin(origins = "http://localhost:8080")
+	@GetMapping("/environment/{environment}")
+	public ResponseEntity<List<LogDTO>> findByEnvironment(@PathVariable String environment){
+		List<Log> logs = logService.findByEnvironment(environment);
+		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
 
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/orderLevel")
 	public ResponseEntity<List<LogDTO>> orderByLevelType(){
-		List<Log> log = logService.findAllOrderByLevelType();
+		List<Log> log = logService.findAllByOrderByLevelType();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 
