@@ -6,12 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.codenation.loglab.dto.LogDTO;
 import br.com.codenation.loglab.entity.Log;
@@ -25,32 +20,37 @@ public class LogController {
 	@Autowired
 	private LogServiceInterface logService;
 	private LogMapper logMapper = new LogMapper();
-	
+
+	@CrossOrigin(origins = "http://localhost:8080")
 	@PostMapping
 	public ResponseEntity<LogDTO> createUser(@RequestBody LogDTO logDTO) {
 		Log log= logService.save(logMapper.toLog(logDTO));
 		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
 
 	}
-	
+
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/{id}")
 	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id){
 		Optional<Log> log = logService.findById(id);
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
 
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/level/{level}")
 	public ResponseEntity<LogDTO> findByLevelType(@PathVariable String level){
 		Log log = logService.findByLevel(level);
 		return ResponseEntity.ok(logMapper.toLogDTO(log));
 	}
-	
+
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/orderLevel")
 	public ResponseEntity<List<LogDTO>> orderByLevelType(){
 		List<Log> log = logService.findAllOrderByLevelType();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
-	
+
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/orderQuantity")
 	public ResponseEntity<List<LogDTO>> orderByQuantity(){
 		List<Log> log = logService.orderByQuantity();

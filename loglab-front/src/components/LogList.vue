@@ -8,15 +8,13 @@
       <div class="w-50">Log</div>
       <div class="w-25">Frequência</div>
     </div>
-  <!--   <div
+  <div
       class="log default-padding d-flex align-items-center justify-content-center"
       @click="logPage(log.id)"
       :key="log.id"
       v-for="log in logs"
     >
-      
-    </div> -->
-    <div class="w-10">
+     <div class="w-10">
         <input type="checkbox" />
       </div>
       <div class="w-25 d-flex align-items-center justify-content-center">
@@ -25,6 +23,9 @@
       <div class="w-50 description">{{log.details}}</div>
       <div class="w-25">{{log.quantity}}</div>
   </div>
+      
+    </div>
+   
 </template>
 
 <script>
@@ -33,24 +34,19 @@ import apiService from './../services/apiService'
 export default {
   data() {
     return {
-      log: {
-        environment: null,
-        quantity: null,
-        details: null,
-
-      }
+      logs: []
     };
   },
   mounted() {
    this.load();
   },
   methods: {
-    logPage(id) {
-      window.location.assign('/#/log');
+    async load() {
+      this.logs = await apiService.orderByLevel();
     },
-    load() {
-      this.log = apiService.orderByLevel('error');
-    }
+    logPage(id) {
+      window.location.assign(`/#/log/${id}`);
+    },
   }
 };
 </script>

@@ -24,7 +24,7 @@ const routes = [
     component: Dashboard
   },
   {
-    path: '/log',
+    path: '/log/:id',
     name: 'log',
     component: Log
   }
