@@ -61,23 +61,31 @@ public class LogService implements LogServiceInterface {
 	}
 
 	@Override
-	public void deleteAll(List<Log> logDTO) {
-		for (Log logs : logDTO) {
-			logRepository.deleteById(logs.getId());
+	public void deleteAll(List<Log> logs) {
+		for (Log logAux : logs) {
+			logRepository.deleteById(logAux.getId());
 		}
 	}
 
 	@Override
-	public void filed(List<Log> logDTO) {
-		for (Log logs : logDTO) {
-			Optional<Log> log =logRepository.findById(logs.getId());
+	public void filed(List<Log> logs) {
+		for (Log logForEach : logs) {
+			Optional<Log> log = logRepository.findById(logForEach.getId());
 			log.get().setFiled(true);
 			logRepository.save(log.get());
 		}
 	}
 
 	@Override
-	public List<Log> unarchive() {
+	public List<Log> filedArchived() {
 		return logRepository.findByFiledTrue();
+	}
+
+	public void unarchive(List<Log> logs) {
+		for (Log logForEach : logs) {
+			Optional<Log> log = logRepository.findById(logForEach.getId());
+			log.get().setFiled(false);
+			logRepository.save(log.get());
+		}
 	}
 }

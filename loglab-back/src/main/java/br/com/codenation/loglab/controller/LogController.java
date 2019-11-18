@@ -68,9 +68,9 @@ public class LogController {
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
-	
+
 	@PutMapping
-	public void filed(@RequestBody List<LogDTO> logDTO){
+	public void filed(@RequestBody List<LogDTO> logDTO) {
 		logService.filed(logMapper.toLogs(logDTO));
 	}
 
@@ -78,11 +78,16 @@ public class LogController {
 	public void delete(@RequestBody List<LogDTO> ids) {
 		logService.deleteAll(logMapper.toLogs(ids));
 	}
-	
-	@GetMapping("/unarchive")
-	public ResponseEntity<List<LogDTO>>unarchive(){
-		List<Log> log = logService.unarchive();
+
+	@GetMapping("/filedArchived")
+	public ResponseEntity<List<LogDTO>> filedArchived() {
+		List<Log> log = logService.filedArchived();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
+	}
+
+	@GetMapping("/unarchive")
+	public void unarchive(@RequestBody List<LogDTO> logDTO) {
+		logService.unarchive(logMapper.toLogs(logDTO));
 	}
 
 }
