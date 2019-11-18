@@ -1,13 +1,18 @@
 package br.com.codenation.loglab.controller;
 
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.codenation.loglab.dto.LogDTO;
@@ -22,49 +27,53 @@ public class LogController {
 	@Autowired
 	private LogServiceInterface logService;
 	private LogMapper logMapper = new LogMapper();
-	
-	//Por enquanto controller nao tera cadastro
+
+	// Por enquanto controller nao tera cadastro
 //	@PostMapping
 //	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
 //		Log log = logService.save(logMapper.toLog(logDTO));
 //		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
 //	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id){
+	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id) {
 		Optional<Log> log = logService.findById(id);
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
-	
+
 	@GetMapping("/logs")
-	public ResponseEntity<List<LogDTO>> logs(){
+	public ResponseEntity<List<LogDTO>> logs() {
 		List<Log> logs = logService.findAll();
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
-	
+
 	@GetMapping("/level/{level}")
-	public ResponseEntity<List<LogDTO>> findByLevelType(@PathVariable String level){
+	public ResponseEntity<List<LogDTO>> findByLevelType(@PathVariable String level) {
 		List<Log> logs = logService.findByLevel(level);
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
-	
+
 	@GetMapping("/environment/{environment}")
-	public ResponseEntity<List<LogDTO>> findByEnvironment(@PathVariable String environment){
+	public ResponseEntity<List<LogDTO>> findByEnvironment(@PathVariable String environment) {
 		List<Log> logs = logService.findByEnvironment(environment);
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
-	
+
 	@GetMapping("/orderLevel")
-	public ResponseEntity<List<LogDTO>> orderByLevelType(){
+	public ResponseEntity<List<LogDTO>> orderByLevelType() {
 		List<Log> log = logService.findAllByOrderByLevelType();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
-	
+
 	@GetMapping("/orderQuantity")
-	public ResponseEntity<List<LogDTO>> orderByQuantity(){
+	public ResponseEntity<List<LogDTO>> orderByQuantity() {
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
-	
-	
+
+	@DeleteMapping
+	public void delete(@RequestBody List<LogDTO> logDTO) {
+		logService.deleteAll(logMapper.toLogs(logDTO));
+	}
+
 }

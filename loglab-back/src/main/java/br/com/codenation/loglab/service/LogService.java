@@ -59,4 +59,11 @@ public class LogService implements  LogServiceInterface{
 	public List<Log> findByEnvironment(String environment) {
 		return logRepository.findByEnvironment(environment);
 	}
+
+	@Override
+	public void deleteAll(List<Log> logs) {
+		for (Log log : logs) {
+			logRepository.deleteById(log.getId());
+		}
+	}
 }

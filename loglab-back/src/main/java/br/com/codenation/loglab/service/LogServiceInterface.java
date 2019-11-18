@@ -15,4 +15,5 @@ public interface LogServiceInterface  {
    public Log save(Log log);
    public List<Log> findAll();
    public List<Log> findByEnvironment(String environment);
+   public void deleteAll(List<Log> list);
 }
