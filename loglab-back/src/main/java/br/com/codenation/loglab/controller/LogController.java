@@ -1,6 +1,5 @@
 package br.com.codenation.loglab.controller;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,10 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.codenation.loglab.dto.LogDTO;
@@ -70,10 +68,21 @@ public class LogController {
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
+	
+	@PutMapping
+	public void filed(@RequestBody List<LogDTO> logDTO){
+		logService.filed(logMapper.toLogs(logDTO));
+	}
 
 	@DeleteMapping
-	public void delete(@RequestBody List<LogDTO> logDTO) {
-		logService.deleteAll(logMapper.toLogs(logDTO));
+	public void delete(@RequestBody List<LogDTO> ids) {
+		logService.deleteAll(logMapper.toLogs(ids));
+	}
+	
+	@GetMapping("/unarchive")
+	public ResponseEntity<List<LogDTO>>unarchive(){
+		List<Log> log = logService.unarchive();
+		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 
 }

@@ -20,5 +20,7 @@ public interface LogRepository extends JpaRepository<Log, Integer> {
 	
 	public List<Log> OrderByQuantity();
 
+	public List<Log> findByFiledTrue();
+
 
 }
