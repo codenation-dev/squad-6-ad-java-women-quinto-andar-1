@@ -1,4 +1,4 @@
-package br.com.codenation.loglab.config;
+/*package br.com.codenation.loglab.config;
 
 import java.io.IOException;
 import java.util.Date;
@@ -58,4 +58,4 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		
 	}
 	
-}
+}*/

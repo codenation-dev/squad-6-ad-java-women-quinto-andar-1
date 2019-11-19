@@ -1,4 +1,4 @@
-package br.com.codenation.loglab.config;
+/*package br.com.codenation.loglab.config;
 
 import static br.com.codenation.loglab.config.SecurityConstants.HEADER_STRING;
 import static br.com.codenation.loglab.config.SecurityConstants.SECRET;
@@ -58,4 +58,4 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 	}
 	
 	
-}
+}*/
