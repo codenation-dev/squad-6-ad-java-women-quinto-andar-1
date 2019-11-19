@@ -1,9 +1,22 @@
 <template>
   <nav id="nav">
     <span>Bem-vindo, usuário. Seu token é: 1234</span>
-    <img class="profile" src="../assets/logo.png" />
+    <div class="user">
+      <a href="/">Logout</a>
+      <img class="profile" src="../assets/logo.png" />
+    </div>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    logout() {
+      
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 @import "../assets/css/variables";
@@ -20,6 +33,11 @@
 
   a {
     text-decoration: none;
+    color: $textColor;
+    margin-right: 15px;
+    &:visited{
+      color: $textColor;
+    }
   }
 
   img {
