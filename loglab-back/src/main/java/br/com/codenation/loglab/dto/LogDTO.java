@@ -8,6 +8,8 @@ import com.sun.istack.NotNull;
 
 public class LogDTO {
 
+	@NotBlank(message = "{id.not.blank}")
+	private Integer id;
 	@NotBlank(message = "{level.not.blank}")
 	private String level;
 	@NotBlank(message = "{titleError.not.blank}")
@@ -24,6 +26,14 @@ public class LogDTO {
 	public LogDTO() {
 	}
 
+	public LogDTO(@NotBlank(message = "{id.not.blank}") Integer id,
+			@NotBlank(message = "{level.not.blank}") String level,
+			@NotBlank(message = "{titleError.not.blank}") String titleError, UserDTO userDTO, String details,
+			LocalDateTime createdAt, Long quantity, boolean filed, String environment) {
+		this(level, titleError, userDTO, details, createdAt, quantity, filed, environment);
+		this.id = id;
+	}
+
 	public LogDTO(@NotBlank(message = "{level.not.blank}") String level,
 			@NotBlank(message = "{titleError.not.blank}") String titleError, @NotNull UserDTO userDTO, String details,
 			LocalDateTime createdAt, Long quantity, boolean filed, String environment) {
@@ -35,6 +45,14 @@ public class LogDTO {
 		this.quantity = quantity;
 		this.filed = filed;
 		this.environment = environment;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getLevel() {
