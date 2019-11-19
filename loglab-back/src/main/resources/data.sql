@@ -1,4 +1,4 @@
-INSERT INTO user(id, email, password, origin)
+INSERT INTO usuario(id, email, password, origin)
 	VALUES(1, 'paty@gamil', '1234567', '1.4.567.8'),
 		(2, 'marcella@gamil', '123', '1.7.123.0'),
 		(3, 'kaori@gamil', '5678', '4.0.123.0'),
