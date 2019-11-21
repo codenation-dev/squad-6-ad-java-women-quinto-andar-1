@@ -1,28 +1,98 @@
 <template>
   <div id="filters">
-    <select name="environment" id="env">
-      <option value="Desenvolvimento" disabled>Ambiente</option>
-      <option value="Desenvolvimento">Desenvolvimento</option>
-      <option value="Produção">Produção</option>
-      <option value="Homologação">Homologação</option>
+    <select name="environment" id="env" @change="setFilter($event)">
+      <option 
+        v-for="env in envs" 
+        :value="env.value" 
+        :key="env.id">
+          {{env.description}}
+      </option>
     </select>
 
-    <select name="environment" id="env">
-      <option value="Desenvolvimento" disabled>Ordenar por</option>
-      <option value="Produção">Produção</option>
-      <option value="Homologação">Homologação</option>
+    <select name="order" id="orderLevelFrequency" @change="setFilter($event)">
+      <option value selected>Ordenar Por</option>
+      <option 
+        v-for="order in orders" 
+        :value="order.value" 
+        :key="order.id">
+          {{order.description}}
+      </option>
     </select>
 
-    <select name="environment" id="env">
-      <option value="Desenvolvimento" disabled>Buscar por</option>
-      <option value="Produção">Produção</option>
-      <option value="Homologação">Homologação</option>
+    <select name="search" id="env" @change="setFilter($event)">
+      <option value selected>Buscar por</option>
+      <option 
+        v-for="search in search" 
+        :value="search.value" 
+        :key="search.id">
+          {{search.description}}
+      </option>
     </select>
 
     <input type="text" />
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      envs: [
+        {
+          description: "Desenvolvimento",
+          value: "desenvolvimento",
+          id: 1
+        },
+        {
+          description: "Produção",
+          value: "producao",
+          id: 2
+        },
+        {
+          description: "Homologação",
+          value: "homologacao",
+          id: 3
+        }
+      ],
+      orders: [
+        {
+          description: "Level",
+          value: "level",
+          id: 1
+        },
+        {
+          description: "Frequência",
+          value: "frequencia",
+          id: 2
+        }
+      ],
+      search: [
+        {
+          description: "Level",
+          value: "level",
+          id: 1
+        },
+        {
+          description: "Descrição",
+          value: "descricao",
+          id: 2
+        },
+        {
+          description: "Origem",
+          value: "origem",
+          id: 3
+        }
+      ]
+    };
+  },
+  methods: {
+    setFilter(event) {
+      let value = event.target.value;
+      this.$emit('change', value);
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 @import "../assets/css/components";

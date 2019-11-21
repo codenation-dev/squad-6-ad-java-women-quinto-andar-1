@@ -1,7 +1,7 @@
 <template>
   <div id="dashboard">
     <navbar />
-    <SearchFilter></SearchFilter>
+    <SearchFilter @change="changeFilter()"></SearchFilter>
     <div id="options" class="d-flex align-items-center justify-content-left">
       <button>Arquivar</button>
       <button>Apagar</button>
@@ -24,9 +24,8 @@ export default {
     LogList
   },
   methods: {
-    login(){
-      console.log("login");
-      window.location.assign('/#/about');
+    changeFilter(){
+      console.log(event);
     }
   }
 };
