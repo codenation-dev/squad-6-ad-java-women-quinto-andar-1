@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,7 +40,8 @@ public class LogController {
 	
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/{id}")
-	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id) {
+	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id,
+			@AuthenticationPrincipal UserDetails userDetails){
 		Optional<Log> log = logService.findById(id);
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}

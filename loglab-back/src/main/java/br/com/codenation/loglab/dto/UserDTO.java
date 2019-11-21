@@ -2,6 +2,7 @@ package br.com.codenation.loglab.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserDTO {
 	
@@ -16,10 +17,6 @@ public class UserDTO {
 
 	@NotBlank(message = "{sourceIp.not.blank}")
 	private String sourceIp;
-
-	public UserDTO() {
-
-	}
 	
 	public UserDTO(@NotBlank(message = "{id.not.blank}") Integer id,
 			@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
@@ -50,7 +47,11 @@ public class UserDTO {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		//this.password = password;
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = (passwordEncoder.encode(password));	
+		//this.password = password;
+		this.password = hashedPassword;
 	}
 
 	public String getSourceIp() {

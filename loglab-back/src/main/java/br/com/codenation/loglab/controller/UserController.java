@@ -30,7 +30,7 @@ public class UserController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:8080")
-	@GetMapping("/{id}")
+	@GetMapping(path = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
 		Optional<User> user = userService.findById(id);
 		return ResponseEntity.ok(userMapper.toUserDTO(user.get()));
