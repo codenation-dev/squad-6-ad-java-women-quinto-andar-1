@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.codenation.loglab.entity.Log;
+import br.com.codenation.loglab.entity.User;
 
 @Repository
 public interface LogRepository extends JpaRepository<Log, Integer> {
@@ -21,5 +22,7 @@ public interface LogRepository extends JpaRepository<Log, Integer> {
 	public List<Log> OrderByQuantity();
 
 	public List<Log> findByFiledTrue();
+
+	public User findUserByUserId(Integer id);
 
 }

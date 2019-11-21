@@ -8,7 +8,6 @@ import com.sun.istack.NotNull;
 
 public class LogDTO {
 
-	@NotBlank(message = "{id.not.blank}")
 	private Integer id;
 	@NotBlank(message = "{level.not.blank}")
 	private String level;

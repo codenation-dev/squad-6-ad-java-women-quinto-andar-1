@@ -3,7 +3,10 @@ package br.com.codenation.loglab.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,11 +35,11 @@ public class LogController {
 	private LogMapper logMapper = new LogMapper();
 
 	// Por enquanto controller nao tera cadastro
-//	@PostMapping
-//	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
-//		Log log = logService.save(logMapper.toLog(logDTO));
-//		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
-//	}
+	@PostMapping
+	public ResponseEntity<LogDTO> createLog(@RequestBody @Valid LogDTO logDTO) {
+		Log log = logService.save(logMapper.toLog(logDTO));
+		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
+	}
 	
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/{id}")

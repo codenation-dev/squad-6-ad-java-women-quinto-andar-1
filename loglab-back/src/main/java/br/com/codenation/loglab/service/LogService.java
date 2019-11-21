@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.codenation.loglab.entity.Log;
+import br.com.codenation.loglab.entity.User;
 import br.com.codenation.loglab.repository.LogRepository;
+import br.com.codenation.loglab.repository.UserRepository;
 
 @Service
 public class LogService implements LogServiceInterface {
 
+	
 	private LogRepository logRepository;
 //precisa instanciar a repository
 
@@ -19,6 +22,9 @@ public class LogService implements LogServiceInterface {
 	LogService(LogRepository repository) {
 		this.logRepository = repository;
 	}
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public Optional<Log> findById(Integer id) {
@@ -47,6 +53,8 @@ public class LogService implements LogServiceInterface {
 
 	@Override
 	public Log save(Log log) {
+		Optional<User> user = userRepository.findById(log.getUser().getId());
+		log.setUser(user.get());
 		return logRepository.save(log);
 	}
 
