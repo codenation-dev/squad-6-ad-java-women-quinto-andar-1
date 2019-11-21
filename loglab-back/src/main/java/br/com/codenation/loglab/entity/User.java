@@ -11,11 +11,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.dom4j.tree.AbstractEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class User extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +31,7 @@ public class User {
 	@NotBlank
 	@NotNull
 	@NotEmpty(message = "O campo senha é obrigatório")
+	//@JsonIgnore
 	private String password;
 
 	@Column(name = "origin")
@@ -87,5 +92,6 @@ public class User {
 	public void setSourceIp(String sourceIp) {
 		this.sourceIp = sourceIp;
 	}
-
-}
+	
+	
+	}

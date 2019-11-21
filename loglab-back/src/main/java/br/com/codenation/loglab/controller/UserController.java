@@ -17,20 +17,20 @@ import br.com.codenation.loglab.mappers.UserMapper;
 import br.com.codenation.loglab.service.UserServiceInterface;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("v1")
 public class UserController {
 
 	@Autowired
 	private UserServiceInterface userService;
 	private UserMapper userMapper = new UserMapper();
-
-	@PostMapping(path = "user")
-	public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) {
+	
+	@PostMapping(path = "/user")
+	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping(path = "/user/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
 		Optional<User> user = userService.findById(id);
 		return ResponseEntity.ok(userMapper.toUserDTO(user.get()));
