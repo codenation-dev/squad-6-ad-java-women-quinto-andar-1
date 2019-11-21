@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().authorizeRequests()
 			.antMatchers(HttpMethod.GET, SIGN_UP_URL).permitAll()
 			.antMatchers("/*/user/**").hasRole("ADMIN")
+			.antMatchers("/log/**").hasRole("ADMIN")
 			.antMatchers("/*/admin/**").hasRole("ADMIN");
 		SecurityConfigurer securityConfigurerAdapter =
 				new AuthTokenConfig(customUserDetailService);
