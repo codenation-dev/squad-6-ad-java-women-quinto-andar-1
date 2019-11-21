@@ -5,7 +5,9 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserDTO {
-
+	
+	@NotBlank(message = "{id.not.blank}")
+	private Integer id;
 	@Email(message = "{email.not.valid}")
 	@NotBlank(message = "{email.not.blank}")
 	private String email;
@@ -19,7 +21,15 @@ public class UserDTO {
 	public UserDTO() {
 
 	}
-
+	
+	public UserDTO(@NotBlank(message = "{id.not.blank}") Integer id,
+			@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
+			@NotBlank(message = "{password.not.blank}") String password,
+			@NotBlank(message = "{sourceIp.not.blank}") String sourceIp) {
+		this(email, password, sourceIp);
+		this.id = id;
+	}
+	
 	public UserDTO(@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
 			@NotBlank(message = "{password.not.blank}") String password,
 			@NotBlank(message = "{sourceIp.not.blank}") String sourceIp) {
@@ -54,6 +64,14 @@ public class UserDTO {
 
 	public void setSourceIp(String sourceIp) {
 		this.sourceIp = sourceIp;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+	
+	public void Id(Integer id) {
+		this.id = id;
 	}
 
 }

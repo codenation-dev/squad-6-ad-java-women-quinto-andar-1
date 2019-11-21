@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
+@Entity(name = "usuario")
 @EntityListeners(AuditingEntityListener.class)
 public class User extends AbstractEntity {
 

@@ -17,8 +17,9 @@ public interface LogRepository extends JpaRepository<Log, Integer> {
 	public List<Log> findByEnvironment(String environment);
 
 	public List<Log> findAllByOrderByLevelType();
-	
+
 	public List<Log> OrderByQuantity();
 
+	public List<Log> findByFiledTrue();
 
 }
