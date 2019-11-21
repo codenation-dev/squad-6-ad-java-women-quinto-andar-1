@@ -83,19 +83,21 @@ public class LogController {
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
-
-	@CrossOrigin(origins = "http://localhost:8080")
-	@PutMapping
-	public void filed(@RequestBody List<LogDTO> logDTO) {
-		logService.filed(logMapper.toLogs(logDTO));
-	}
-
+	
 	@CrossOrigin(origins = "http://localhost:8080")
 	@DeleteMapping
 	public void delete(@RequestBody List<LogDTO> ids) {
 		logService.deleteAll(logMapper.toLogs(ids));
 	}
 
+	//arquivar
+	@CrossOrigin(origins = "http://localhost:8080")
+	@PutMapping
+	public void toFile(@RequestBody List<LogDTO> logDTO) {
+		logService.filed(logMapper.toLogs(logDTO));
+	}
+
+	//arquivos arquivados
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/filedArchived")
 	public ResponseEntity<List<LogDTO>> filedArchived() {
@@ -103,6 +105,7 @@ public class LogController {
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 
+	//desarquivar
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/unarchive")
 	public void unarchive(@RequestBody List<LogDTO> logDTO) {
