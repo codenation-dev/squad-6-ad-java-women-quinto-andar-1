@@ -12,17 +12,16 @@ import br.com.codenation.loglab.entity.User;
 public class UserMapper {
 
 	public UserDTO toUserDTO(User user){
-		return new UserDTO(user.getEmail(),
+		return new UserDTO(user.getId(),
+				user.getEmail(),
 				user.getPassword(),
 				user.getSourceIp());
 	}
 	
-	public List<UserDTO> toUserDTOs(List<UserDTO> users){
+	public List<UserDTO> toUserDTOs(List<User> users){
 		List<UserDTO>lista = new ArrayList<>();
-		for (UserDTO u : users) {
-			lista.add(new UserDTO(u.getEmail(),
-					u.getPassword(),
-					u.getSourceIp()));
+		for (User u : users) {
+			lista.add(toUserDTO(u));
 		}
 		return lista;
 	}

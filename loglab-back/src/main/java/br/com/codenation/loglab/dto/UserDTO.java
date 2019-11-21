@@ -18,6 +18,10 @@ public class UserDTO {
 	@NotBlank(message = "{sourceIp.not.blank}")
 	private String sourceIp;
 	
+	public UserDTO() {
+		
+	}
+	
 	public UserDTO(@NotBlank(message = "{id.not.blank}") Integer id,
 			@Email(message = "{email.not.valid}") @NotBlank(message = "{email.not.blank}") String email,
 			@NotBlank(message = "{password.not.blank}") String password,
