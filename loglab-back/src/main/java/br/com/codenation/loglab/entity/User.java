@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
+@Entity(name = "usuario")
 @EntityListeners(AuditingEntityListener.class)
 public class User {
 

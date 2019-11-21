@@ -249,3 +249,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/java,linux,maven,windows,eclipse,intellij,visualstudiocode
+/.apt_generated_tests/
