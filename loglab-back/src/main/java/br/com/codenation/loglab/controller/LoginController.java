@@ -1,10 +1,9 @@
 package br.com.codenation.loglab.controller;
 
 
-import br.com.codenation.loglab.config.TokenUtil;
-import br.com.codenation.loglab.entity.AuthenticationRequest;
-import br.com.codenation.loglab.entity.UserLogin;
-import br.com.codenation.loglab.service.CustomUserDetailService;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +14,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.codenation.loglab.config.TokenUtil;
+import br.com.codenation.loglab.entity.AuthenticationRequest;
+import br.com.codenation.loglab.entity.UserLogin;
+import br.com.codenation.loglab.service.CustomUserDetailService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
