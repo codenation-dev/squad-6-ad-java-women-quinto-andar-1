@@ -1,4 +1,4 @@
-package br.com.codenation.spring.config;
+package br.com.codenation.loglab.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,17 +20,19 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(
-                        "br.com.codenation.spring.controller"))
+                        "br.com.codenation.loglab.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Documentação da API Rest")
-                .description("\" Documentação do projeto que estamos desenvolvendo\"")
+        return new ApiInfoBuilder().title("Swagger da API LogLab")
+                .description("\"Documentação do projeto final LogLab desenvolvido para AceleraDev - Codenation\"")
                 .version("1.0.0")
-                .contact(new Contact("Marcella Farias", "https://github.com/marcellafarias", "fcosta.marcella@gmail.com"))
+                .contact(new Contact("Squad 6",
+                        "https://github.com/codenation-dev/squad-6-ad-java-women-quinto-andar-1",
+                        "contato@loglab.com"))
                 .build();
     }
 }
