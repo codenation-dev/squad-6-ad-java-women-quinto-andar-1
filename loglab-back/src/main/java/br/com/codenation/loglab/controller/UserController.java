@@ -19,8 +19,8 @@ import br.com.codenation.loglab.entity.User;
 import br.com.codenation.loglab.mappers.UserMapper;
 import br.com.codenation.loglab.service.UserServiceInterface;
 
+@CrossOrigin
 @RestController
-@CrossOrigin(origins = "https://loglab-web.herokuapp.com/")
 @RequestMapping("/user")
 public class UserController {
 
@@ -28,12 +28,14 @@ public class UserController {
 	private UserServiceInterface userService;
 	private UserMapper userMapper = new UserMapper();
 
+	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 		User user = userService.save(userMapper.toUser(userDTO));
 		return new ResponseEntity<>(userMapper.toUserDTO(user), HttpStatus.CREATED);
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
 		Optional<User> user = userService.findById(id);

@@ -51,3 +51,4 @@ public class UserLogin {
 		this.sessionId = sessionId;
 	}
 }
+

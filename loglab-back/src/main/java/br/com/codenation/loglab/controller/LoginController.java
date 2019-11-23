@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import br.com.codenation.loglab.config.TokenUtil;
@@ -25,8 +26,9 @@ import br.com.codenation.loglab.entity.AuthenticationRequest;
 import br.com.codenation.loglab.entity.UserLogin;
 import br.com.codenation.loglab.service.CustomUserDetailService;
 
+@CrossOrigin
 @RestController
-@CrossOrigin("https://loglab-web.herokuapp.com/")
+@RequestMapping("/login")
 public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -34,6 +36,7 @@ public class LoginController {
     @Autowired
     private CustomUserDetailService customUserDetailService;
 
+    @CrossOrigin
     @PostMapping("/authenticate")
     public ResponseEntity<UserLogin> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
