@@ -7,24 +7,24 @@
       </div>
       <div id="logInfo">
         <div class="title w-100">
-          <h2>Log Número 1</h2>
+          <h2>{{log.titleError}}</h2>
         </div>
         <div class="about d-flex justify-content-space-between">
           <div class="details w-50 text-align-left">
             <h3>Título</h3>
-            <p>Log Número 1</p>
+            <p>{{log.titleError}}</p>
 
             <h3>Detalhes</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac placerat dui, sed eleifend metus. Sed tempor consequat ante sed tempor. Cras porta, massa quis convallis fringilla, nunc mi luctus ipsum, a efficitur ipsum orci ut dolor. Nam facilisis ornare justo. Sed consequat ut sem eget rutrum. Proin a elementum ex. Quisque fermentum, metus in viverra convallis, leo sapien lobortis felis, in convallis felis nisl at nulla. Pellentesque viverra magna vitae odio ultrices vulputate. Nullam ullamcorper ipsum tortor, a ultricies risus aliquet vel. Maecenas sodales, tellus vitae facilisis sollicitudin, tortor turpis tincidunt ex, at malesuada enim magna in massa.</p>
+            <p>{{log.details}}</p>
           </div>
 
           <div class="more w-25">
-            <span class="badge">Desenvolvimento</span>
+            <span class="badge">{{log.environment}}</span>
             <h3>Eventos</h3>
-            <p>10</p>
+            <p>{{log.quantity}}</p>
 
             <h3>Coletado por</h3>
-            <p>1234</p>
+            <p>{{log.user.sourceIp}}</p>
           </div>
         </div>
       </div>
@@ -34,14 +34,27 @@
 
 <script>
 import Navbar from './../components/Navbar'
+import apiService from './../services/apiService'
+
 export default {
   name: "home",
+  data(){
+    return {
+      log: null,
+    }
+  },
   components: {
     Navbar,
+  },
+  mounted(){
+    this.loadLogData();
   },
   methods: {
     back() {
       window.location.assign("/#/dashboard");
+    },
+    async loadLogData(){
+      this.log = await apiService.getLog(parseInt(this.$route.params.id));
     }
   }
 };

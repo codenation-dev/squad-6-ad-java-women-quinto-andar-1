@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view class="content" />
     <myFooter />
   </div>
 </template>
@@ -387,6 +387,12 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
+html,body {
+    min-height: 100%;
+}
+.content{
+    min-height: calc(100vh - 50px);
+}
 #app {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -394,6 +400,16 @@ textarea {
   text-align: center;
   color: #2c3e50;
   font-size: 16px;
+  height: 100%;
+  position: relative;
+}
+
+footer {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #nav {
