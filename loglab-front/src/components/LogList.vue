@@ -12,7 +12,7 @@
       class="log default-padding d-flex align-items-center justify-content-center"
       @click="logPage(log.id)"
       :key="log.id"
-      v-for="log in logs"
+      v-for="log in filteredLogs"
     >
      <div class="w-10">
         <input type="checkbox" />
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       logs: [],
+      filteredLogs: [],
       loggedUser: null,
     };
   },
@@ -44,6 +45,14 @@ export default {
   methods: {
     async load() {
       this.logs = await apiService.getLogs();
+      this.populateFilteredLogs(this.logs);
+    },
+    populateFilteredLogs(logs) {
+      for(let i = 0; i < logs.length; i++) {
+        if (logs[i].filed == false) {
+          this.filteredLogs.push(logs[i]);
+        }
+      }
     },
     logPage(id) {
       this.$router.push(`/log/${id}`);

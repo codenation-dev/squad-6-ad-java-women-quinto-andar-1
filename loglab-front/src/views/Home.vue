@@ -25,17 +25,22 @@ export default {
     }
   }, 
   name: "home",
+  beforeCreate(){
+    if(window.localStorage.getItem('user:token') &&
+      window.localStorage.getItem('user:email')){
+      this.$router.push('dashboard');
+    }
+  },
   methods: {
     async login(){
       let email = this.user.email;
       let password = this.user.password;
       console.log(email, password);
       this.loggedUser = await apiService.login(email, password);
-      console.log(this.loggedUser);
       if (this.loggedUser.status == 'OK') {
-        console.log(this.loggedUser);
-        this.$router.push('dashboard');
+        window.localStorage.setItem('user:email', this.loggedUser.email);
         window.localStorage.setItem('user:token', this.loggedUser.token);
+        this.$router.push('dashboard');
       } else {
         console.log("não rolou")
       }
