@@ -15,18 +15,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import br.com.codenation.loglab.config.TokenUtil;
 import br.com.codenation.loglab.entity.AuthenticationRequest;
 import br.com.codenation.loglab.entity.UserLogin;
 import br.com.codenation.loglab.service.CustomUserDetailService;
 
+@CrossOrigin
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/login")
 public class LoginController {
     @Autowired
@@ -35,7 +36,8 @@ public class LoginController {
     @Autowired
     private CustomUserDetailService customUserDetailService;
 
-    @RequestMapping(value = "/authenticate", method = { RequestMethod.POST })
+    @CrossOrigin
+    @PostMapping("/authenticate")
     public ResponseEntity<UserLogin> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
             String email = authenticationRequest.getEmail();
@@ -44,6 +46,7 @@ public class LoginController {
             Authentication authentication = this.authenticationManager.authenticate(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = this.customUserDetailService.loadUserByUsername(email);
+            String sessionId =  RequestContextHolder.currentRequestAttributes().getSessionId();
             List<String> roles = new ArrayList();
 
             for (GrantedAuthority authority : userDetails.getAuthorities()) {
@@ -51,7 +54,7 @@ public class LoginController {
             }
 
             return new ResponseEntity<UserLogin>(new UserLogin(userDetails.getUsername(), roles,
-                    TokenUtil.createToken(userDetails), HttpStatus.OK), HttpStatus.OK);
+                    TokenUtil.createToken(userDetails), HttpStatus.OK, sessionId), HttpStatus.OK);
 
         } catch (BadCredentialsException bce) {
             return new ResponseEntity<UserLogin>(new UserLogin(), HttpStatus.UNPROCESSABLE_ENTITY);
