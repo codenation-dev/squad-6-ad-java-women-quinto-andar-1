@@ -1,46 +1,40 @@
 <template>
   <div id="loglist">
     <div class="title d-flex align-items-center default-padding">
-      <div class="w-10">
-        <input type="checkbox" />
-      </div>
       <div class="w-25">Level</div>
-      <div class="w-50">Log</div>
+      <div class="w-75">Log</div>
       <div class="w-25">Frequência</div>
     </div>
-  <div
+    <div
       class="log default-padding d-flex align-items-center justify-content-center"
       @click="logPage(log.id)"
       :key="log.id"
       v-for="log in filteredLogs"
     >
-     <div class="w-10">
-        <input type="checkbox" />
-      </div>
+     
       <div class="w-25 d-flex align-items-center justify-content-center">
         <div class="badge">{{log.level}}</div>
       </div>
-      <div class="w-50 description">{{log.details}}</div>
+      <div class="w-75 description">{{log.details}}</div>
       <div class="w-25">{{log.quantity}}</div>
-  </div>
-      
     </div>
-   
+  </div>
 </template>
 
 <script>
-import apiService from './../services/apiService'
+import apiService from "./../services/apiService";
 
 export default {
   data() {
     return {
       logs: [],
       filteredLogs: [],
-      loggedUser: null,
+      selectedLogs: [],
+      loggedUser: null
     };
   },
   mounted() {
-   this.load();
+    this.load();
   },
   methods: {
     async load() {
@@ -48,7 +42,7 @@ export default {
       this.populateFilteredLogs(this.logs);
     },
     populateFilteredLogs(logs) {
-      for(let i = 0; i < logs.length; i++) {
+      for (let i = 0; i < logs.length; i++) {
         if (logs[i].filed == false) {
           this.filteredLogs.push(logs[i]);
         }
@@ -57,6 +51,13 @@ export default {
     logPage(id) {
       this.$router.push(`/log/${id}`);
     },
+    async archiveLogs() {
+      await apiService.archiveLogs(this.selectedLogs);
+      console.log("arquivou");
+    },
+    showSelected() {
+      console.log(this.selectedLogs);
+    }
   }
 };
 </script>
@@ -68,11 +69,10 @@ export default {
 #loglist {
   width: 100%;
   .title {
-    border-bottom: 1px solid $primaryGray;
+    background-color: $secondaryGray;
   }
   .title,
   .log {
-    
     .badge {
       background-color: $primaryGray;
       color: white;
@@ -94,14 +94,20 @@ export default {
     border-bottom: 1px solid $secondaryGray;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
-    &:hover{
+    &:hover {
       color: $primaryColor;
       border-bottom: 1px solid $primaryColor;
       transition: all 0.25s ease-in-out;
-      .badge{
+      .badge {
         background: $primaryColor;
         transition: all 0.25s ease-in-out;
       }
+    }
+  }
+  #options {
+    padding: 20px 60px !important;
+    button {
+      margin: 0 5px 0 0;
     }
   }
   input {

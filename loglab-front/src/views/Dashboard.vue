@@ -1,12 +1,7 @@
 <template>
   <div id="dashboard">
     <navbar />
-    <SearchFilter></SearchFilter>
-    <div id="options" class="d-flex align-items-center justify-content-left">
-      <button>Arquivar</button>
-      <button>Apagar</button>
-    </div>
-    <LogList></LogList>
+    <LogList ></LogList>
   </div>
 </template>
 
@@ -29,6 +24,11 @@ export default {
     SearchFilter,
     LogList
   },
+  methods: {
+    setLogsToArchive(values) {
+      console.log(values);
+    }
+  }
   
 };
 </script>
@@ -47,10 +47,5 @@ input {
   justify-content: center;
   flex-direction: column;
 }
-#options{
-  padding: 20px 60px !important;
-  button{
-    margin: 0 5px 0 0;
-  }
-}
+
 </style>

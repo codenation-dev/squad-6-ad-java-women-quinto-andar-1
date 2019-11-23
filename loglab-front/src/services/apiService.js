@@ -35,5 +35,17 @@ export default {
         })
             .then((res) => { return res.data })
             .catch((res) => { console.log(res.error) });
-    }
+    },
+    archiveLogs(logs) {
+        return api.put(`/log`, {
+            logs
+        }, {
+            headers: {
+                'x-auth-token': `${window.localStorage.getItem('user:token')}`
+            }
+        })
+            .then((res) => { return res.data })
+            .catch((res) => { console.log(res) });
+    },
+    
 }
