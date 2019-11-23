@@ -13,9 +13,6 @@ import javax.validation.constraints.NotNull;
 
 import org.dom4j.tree.AbstractEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "usuario")
 @EntityListeners(AuditingEntityListener.class)

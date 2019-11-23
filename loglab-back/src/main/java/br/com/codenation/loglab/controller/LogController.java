@@ -25,8 +25,8 @@ import br.com.codenation.loglab.entity.Log;
 import br.com.codenation.loglab.mappers.LogMapper;
 import br.com.codenation.loglab.service.LogServiceInterface;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
+@CrossOrigin(origins = "https://loglab-web.herokuapp.com/")
 @RequestMapping("/log")
 public class LogController {
 
@@ -41,7 +41,6 @@ public class LogController {
 		return new ResponseEntity<>(logMapper.toLogDTO(log), HttpStatus.CREATED);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/{id}")
 	public ResponseEntity<LogDTO> findbyId(@PathVariable Integer id,
 			@AuthenticationPrincipal UserDetails userDetails){
@@ -49,56 +48,48 @@ public class LogController {
 		return ResponseEntity.ok(logMapper.toLogDTO(log.get()));
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/logs")
 	public ResponseEntity<List<LogDTO>> logs() {
 		List<Log> logs = logService.findAll();
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/level/{level}")
 	public ResponseEntity<List<LogDTO>> findByLevelType(@PathVariable String level) {
 		List<Log> logs = logService.findByLevel(level);
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/environment/{environment}")
 	public ResponseEntity<List<LogDTO>> findByEnvironment(@PathVariable String environment) {
 		List<Log> logs = logService.findByEnvironment(environment);
 		return ResponseEntity.ok(logMapper.toLogDTOs(logs));
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/orderLevel")
 	public ResponseEntity<List<LogDTO>> orderByLevelType() {
 		List<Log> log = logService.findAllByOrderByLevelType();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/orderQuantity")
 	public ResponseEntity<List<LogDTO>> orderByQuantity() {
 		List<Log> log = logService.orderByQuantity();
 		return ResponseEntity.ok(logMapper.toLogDTOs(log));
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
 	@DeleteMapping
 	public void delete(@RequestBody List<LogDTO> ids) {
 		logService.deleteAll(logMapper.toLogs(ids));
 	}
 
 	//arquivar
-	@CrossOrigin(origins = "http://localhost:8080")
 	@PutMapping
 	public void toFile(@RequestBody List<LogDTO> logDTO) {
 		logService.filed(logMapper.toLogs(logDTO));
 	}
 
 	//arquivos arquivados
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/filedArchived")
 	public ResponseEntity<List<LogDTO>> filedArchived() {
 		List<Log> log = logService.filedArchived();
@@ -106,7 +97,6 @@ public class LogController {
 	}
 
 	//desarquivar
-	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/unarchive")
 	public void unarchive(@RequestBody List<LogDTO> logDTO) {
 		logService.unarchive(logMapper.toLogs(logDTO));
