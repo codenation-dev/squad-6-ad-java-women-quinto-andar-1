@@ -34,7 +34,8 @@ import apiService from './../services/apiService'
 export default {
   data() {
     return {
-      logs: []
+      logs: [],
+      loggedUser: null,
     };
   },
   mounted() {
@@ -42,10 +43,10 @@ export default {
   },
   methods: {
     async load() {
-      this.logs = await apiService.orderByLevel();
+      this.logs = await apiService.getLogs();
     },
     logPage(id) {
-      window.location.assign(`/#/log/${id}`);
+      this.$router.push(`/log/${id}`);
     },
   }
 };

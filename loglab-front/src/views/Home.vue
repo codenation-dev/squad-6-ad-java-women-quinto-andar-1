@@ -2,9 +2,9 @@
   <div class="home fullscreen">
     <img src="../assets/logo.png" />
     <h2>Para começar, faça o login :)</h2>
-    <form id="loginForm" @submit="login(user.email, user.password)">
+    <form id="loginForm" @submit.prevent="login()">
       <input type="text" name="email" placeholder="youremail@yoursite.com" v-model="user.email" />
-      <input type="password" name="passwors" placeholder="senha" v-model="user.password" />
+      <input type="password" name="password" placeholder="senha" v-model="user.password" />
       <button type="submit">Entrar</button>
     </form>
   </div>
@@ -26,11 +26,16 @@ export default {
   }, 
   name: "home",
   methods: {
-    login(email, password){
+    async login(){
+      let email = this.user.email;
+      let password = this.user.password;
       console.log(email, password);
-      this.loggedUser = apiService.login(email, password);
-      if (this.loggedUser) {
-        window.location.assign('/#/dashboard');
+      this.loggedUser = await apiService.login(email, password);
+      console.log(this.loggedUser);
+      if (this.loggedUser.status == 'OK') {
+        console.log(this.loggedUser);
+        this.$router.push('dashboard');
+        window.localStorage.setItem('user:token', this.loggedUser.token);
       } else {
         console.log("não rolou")
       }

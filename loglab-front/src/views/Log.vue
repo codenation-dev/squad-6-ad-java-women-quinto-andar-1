@@ -1,7 +1,7 @@
 <template>
   <div id="logInfo">
     <Navbar />
-    <div class="default-padding">
+    <div class="default-padding" v-if="log">
       <div id="options" class="d-flex align-items-center justify-content-left">
         <button @click="back()">Voltar</button>
       </div>
@@ -24,7 +24,7 @@
             <p>{{log.quantity}}</p>
 
             <h3>Coletado por</h3>
-            <p>{{log.user.sourceIp}}</p>
+            <p>{{log.userDTO.sourceIp}}</p>
           </div>
         </div>
       </div>
@@ -33,27 +33,27 @@
 </template>
 
 <script>
-import Navbar from './../components/Navbar'
-import apiService from './../services/apiService'
+import Navbar from "./../components/Navbar";
+import apiService from "./../services/apiService";
 
 export default {
   name: "home",
-  data(){
+  data() {
     return {
-      log: null,
-    }
+      log: null
+    };
   },
   components: {
-    Navbar,
+    Navbar
   },
-  mounted(){
+  mounted() {
     this.loadLogData();
   },
   methods: {
     back() {
       window.location.assign("/#/dashboard");
     },
-    async loadLogData(){
+    async loadLogData() {
       this.log = await apiService.getLog(parseInt(this.$route.params.id));
     }
   }

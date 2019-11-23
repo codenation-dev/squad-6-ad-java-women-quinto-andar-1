@@ -15,20 +15,21 @@
 import Navbar from "@/components/Navbar.vue";
 import SearchFilter from "@/components/Filter.vue";
 import LogList from "@/components/LogList.vue";
+import apiService from './../services/apiService'
 
 export default {
   name: "home",
+  data() {
+    return {
+      loggedUser: null,
+    }
+  },
   components: {
     Navbar,
     SearchFilter,
     LogList
   },
-  methods: {
-    login(){
-      console.log("login");
-      window.location.assign('/#/about');
-    }
-  }
+  
 };
 </script>
 
